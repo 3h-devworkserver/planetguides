@@ -1,0 +1,36 @@
+<?php foreach($gallerys as $gallery): ?>
+		<div class="thumbnail radioconsistency">
+			<a style="background-image:url(<?php echo e(asset($gallery->imagesmall)); ?>)" href="<?php echo e($gallery->path); ?>"  data-fancybox-group="gallery" title="<?php echo e($gallery->caption); ?> " class="fancybox bg-image"></a>
+			<?php /* <a style="background-image:url(<?php echo e(asset($gallery->path)); ?>)"  data-fancybox-group="gallery" title="<?php echo e($gallery->caption); ?> " class="fancybox bg-image"></a> */ ?>
+			
+	                <button data-imgid= "<?php echo e($gallery->id); ?>" data-userid= "<?php echo e($gallery->user_id); ?>" id="galleryDeleteButton">
+	                <i>&times;</i>
+	                </button> 
+            <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <?php echo Form::hidden('user_id',$gallery->user_id,['id' => 'user_id']); ?>
+
+            <div class="profile"> 
+					<div class="radio">
+					 <?php if($gallery->imagesmall === $user->profile->profilesmallImg): ?>
+				    	<label>
+						  <input type="radio" value="<?php echo e($gallery->imagesmall); ?>" name="status" data-imgid= "<?php echo e($gallery->id); ?>" data-userid= "<?php echo e($gallery->user_id); ?>" checked /> Set as Profile Picture
+						</label>
+						<?php else: ?>
+				    	<label>
+						  <input type="radio" value="<?php echo e($gallery->imagesmall); ?>" name="status" data-imgid= "<?php echo e($gallery->id); ?>" data-userid= "<?php echo e($gallery->user_id); ?>"   /> Set as Profile Picture
+						</label>
+						<?php endif; ?>
+					  <?php /*  <?php if($gallery->path === $user->profile->profileImg): ?>
+				    	<label>
+						  <input type="radio" value="<?php echo e($gallery->path); ?>" name="status" data-imgid= "<?php echo e($gallery->id); ?>" data-userid= "<?php echo e($gallery->user_id); ?>" checked /> Set as Profile Picture
+						</label>
+						<?php else: ?>
+				    	<label>
+						  <input type="radio" value="<?php echo e($gallery->path); ?>" name="status" data-imgid= "<?php echo e($gallery->id); ?>" data-userid= "<?php echo e($gallery->user_id); ?>"   /> Set as Profile Picture
+						</label>
+						<?php endif; ?> */ ?>
+					</div>
+            </div>  
+		</div>	
+<?php endforeach; ?>

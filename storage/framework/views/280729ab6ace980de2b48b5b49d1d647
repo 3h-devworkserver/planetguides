@@ -1,0 +1,763 @@
+<?php $__env->startSection('title'); ?> Edit Profile | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>"> 
+<script type=text/javascript>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+ </script>
+
+ <script type="text/javascript">
+          $(document).ready(function(){
+            $("select.chosen-select").chosen({width: "100%"});
+                    });
+</script>
+<style type="text/css">
+      .demo { position: relative; }
+      .demo i {
+        position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+      }
+      </style>
+      <script type="text/javascript">
+       $(document).ready(function() {
+
+        var config = "<?php echo e($availibility); ?>";
+       
+        //console.log(config);
+        if (config != '') {
+          console.log(config);
+          var allBookeddates = config.split(",");
+          $('#simpliest-usage').multiDatesPicker
+          ({
+            //format: 'yyyy-mm-dd',
+            minDate: 0,
+            addDates: allBookeddates,
+            });
+                    
+            }
+            else {
+            console.log("no data");
+              $('#simpliest-usage').multiDatesPicker
+                      ({
+                        //format: 'yyyy-mm-dd',
+                        minDate: 0,
+                        addDates: allBookeddates,
+                        
+            });
+            }
+        
+        $('.demo .code').each(function() {
+
+          eval($(this).attr('title','NEW: edit this code and test it!').text());
+        })
+      });
+    </script>
+    <section class="profile-banner" style="background-image:url(<?php echo e(asset($guide->bannerPic)); ?>)">
+        
+        
+        
+        
+      <?php echo Form::open(); ?>
+
+             <div class="bannerArea btn btn-danger">
+                 <span class="uploadButton"><i class="fa fa-camera"></i><span>Upload</span></span>
+                    <input 
+                        id="bannerPic"
+                        name="bannerPic"
+                        data-url="<?php echo e(route('frontend.guide.banner.upload')); ?>"                        
+                        accept="image/*" 
+                        type="file">
+              </div> 
+      <?php echo Form::close(); ?>
+
+      <div class="bannerUploadProcess"></div>
+    </section>
+  
+
+    <section class="guide-profile">
+        <div class="container">
+            <div class="row guide-wrapper">
+                <div class="col-md-9">
+                    <div class="guide-name">
+                        <div class="name pull-left">
+                        <?php if($guide->guide->certified): ?>
+                            <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Certified guide"><i class="fa fa-certificate"></i></button>
+                        <?php endif; ?>
+                            <h3 class=""><?php echo e($guide->fname); ?> <?php echo e($guide->lname); ?></h3>
+                        </div>
+                        <div class="rating-review pull-right text-center">
+                                <span class="rating remarkable">
+                                    <span><?php echo e($guide->guide->rating_count); ?></span>
+                                </span>
+                             <span>
+                                    <a href="#">Reviews</a>
+                                </span>
+                        </div>
+                    </div> <!-- guide-name closing -->
+                </div> <!-- col-md-12 closing -->
+            </div> <!--row closing -->
+
+            <div class="row">
+                
+                <div class="alert alert-success" id="successmsg" style="display:none;">
+                    
+            </div>
+                
+                <div class="col-md-3 col-sm-4">
+                    <div class="traveller-rating">
+                        <div class="title">
+                            <h4>Guide Rating</h4>
+                            <div class="rating-wrap">
+                            <?php if($guide->guide->rating_cache >= 4.5): ?>
+                                <div class="rating-type">
+                                    <p>Excellent</p>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                            
+                                            </div>
+                                        </div>
+
+                                    <small class="pull-right">20</small>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($guide->guide->rating_cache >= 3.5 && $guide->guide->rating_cache < 4.5): ?>
+                                <div class="rating-type">
+                                    <p>Very Good</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                                            
+                                        </div>
+                                    </div>
+                                    <small class="pull-right">10</small>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($guide->guide->rating_cache >= 2.5 && $guide->guide->rating_cache < 3.5): ?>
+                                <div class="rating-type">
+                                    <p>Average</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                            
+                                        </div>
+                                    </div>
+                                    <small class="pull-right">2</small>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($guide->guide->rating_cache >= 1.5 && $guide->guide->rating_cache < 2.5): ?>
+                                <div class="rating-type">
+                                    <p>Poor</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">
+                                            
+                                        </div>
+                                    </div>
+                                    <small class="pull-right">0</small>
+                                </div>
+                            <?php endif; ?>
+                            <?php if($guide->guide->rating_cache >= 0 && $guide->guide->rating_cache <= 1): ?>
+                                <div class="rating-type">
+                                    <p>Terrible</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                           
+                                        </div>
+                                    </div>
+                                    <small class="pull-right">0</small>
+                                </div>
+                            <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-8">
+               
+                    <div class="row profile-content">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="profile-image">
+                        
+                                        <?php echo Form::open(); ?>
+
+                                            
+                                             <img src="<?php echo e($guide->profilePic); ?>" class="profile-avatar bg-image" />
+                                             
+                                             <!-- <div class="profileInput">
+                                               <span class="uploadButton"><i class="fa fa-camera"></i><span>Upload</span>
+                                               <input 
+                                                      id="profilePic"
+                                                      name="profilePic"
+                                                      data-url="<?php echo e(route('frontend.guide.profile.pic.upload')); ?>"
+                                                      
+                                                      accept="image/*" 
+                                                      type="file"></span>
+                                                  
+                                                </div> --> 
+                                                <div class="upload-caption">
+                                                    <div class="profileInput">
+                                                        <div class="input-group">
+                                                                <span class="input-group-btn">
+                                                                    <span class="uploadButton btn-file btn">
+                                                                        <i class="fa fa-camera"></i><span>Upload</span>
+                                                                            <input 
+                                                                                  id="profilePic"
+                                                                                  name="profilePic"
+                                                                                  data-url="<?php echo e(route('frontend.guide.profile.pic.upload')); ?>"
+                                                                                  
+                                                                                  accept="image/*" 
+                                                                                  type="file">
+                                                                    </span>
+                                                                </span>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+
+
+                                        <?php echo Form::close(); ?>
+
+
+                    </div> 
+                    <div class="uploadProcess"></div>
+                                </div>
+                                <div class="col-md-8 col-sm-12">
+                                    <div class="guide-detail">
+                                        <ul>
+                                           <!--  <li>
+                                                <p><span>Tour ID :</span><?php echo e($guide->guide->gid); ?></p>
+                                            </li> -->
+                                            <li>
+                                               
+                                                <span>Experience Since :</span>
+                                                <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'experienceForm']); ?>
+
+                                                
+                                                <div id="textWrapperExp" class="field"><?php echo e($guide->experience); ?>
+
+                                                </div>
+                                                <div id="editInputExp" class="edit-field" style="display:none">
+                                                    <?php echo Form::selectYear('experience', 1992, Carbon\Carbon::today()->format('Y'), $guide->profile->experience, ['class' => 'form-control', 'id'=>'experienceInput']); ?>
+
+
+                                                    <?php echo Form::hidden('id', null); ?>
+
+                                                    <span class="select-field"></span>
+                                                </div>
+                                                <div class="option-btns">
+                                                    <span id="editExperience" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                    <a id="cancelExp" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                    
+                                                    <input type="submit" class="btn btn-success" id="saveExperience" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                
+                                                <?php echo Form::close(); ?>
+
+                                            
+                        
+                                            </li>
+
+                                            <li>
+                                               
+                                                <span>Address :</span>
+                                                <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'addressForm']); ?>
+
+                                                
+                                                <div id="textWrapperAddr" class="field"> <p>Country: <span class="country"><?php echo e($guide->profile->country); ?></span></p><p>State: <span class="state"><?php echo e($guide->profile->state); ?></span></p> <p>City: <span class="city"><?php echo e($guide->profile->city); ?></span></p>
+                                                </div>
+                                                <div id="editInputAddr" class="edit-field choose-address" style="display:none">
+                                                <div class="form-group">
+                                                    <label class="control-label">Country: </label>
+                                                    <select name="country" id="country" class="form-control" onchange="print_state('state',this.selectedIndex);"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label">State: </label>
+                                                    <select name="state" id="state" class="form-control"></select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label">City: </label>
+                                                    <?php echo Form::text('city', null, ['class'=> 'form-control', 'id'=>'city']); ?>
+
+                                                </div>
+                                                    <?php echo Form::hidden('id', null); ?>
+
+                                                </div>
+                                                <div class="option-btns">
+                                                    <span id="editAddr" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                    <a id="cancelAddr" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                    
+                                                    <input type="submit" class="btn btn-success" id="saveAddr" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                
+                                                <?php echo Form::close(); ?>
+
+                                            
+                        
+                                            </li>
+                                           
+                                            <li>
+
+                                                <span>Gender :</span>
+                                                <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'genderForm']); ?>
+
+                                                
+                                                <div id="textWrapperGen" class="field">
+                                                <?php if($guide->gender == 0): ?>
+                                                    Male
+                                                <?php elseif($guide->gender == 1): ?>
+                                                    Female
+                                                <?php else: ?>
+                                                    Other
+                                                <?php endif; ?>
+                                                </div>
+                                                <div id="editInputGen" class="edit-field" style="display:none">
+                                                    <!-- <span class="radio"> -->
+                                                        <?php echo Form::select('gender', array('0' => 'Male', '1' => 'Female', '2' =>'Other'), $guide->gender, array('class'=>'form-control')); ?>
+
+                                                    
+                                                    <?php echo Form::hidden('id', null); ?>
+
+                                                    <span class="select-field"></span>
+                                                </div>
+                                                <div class="option-btns">
+                                                    <span id="editGender" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                    <a id="cancelGen" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                    
+                                                    <input type="submit" class="btn btn-success" id="saveGender" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                
+                                                <?php echo Form::close(); ?>
+
+                                             
+                                            </li>
+
+                                            <li>
+                                                 <span>Main Guiding Area :</span>
+                                                <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'MgForm']); ?>
+
+                                                
+                                                <div id="textWrapperMg" class="field"><?php echo e($selectedarea->guide_area); ?></div>
+
+                                                <div id="editInputMg" class="edit-field" style="display:none">
+
+
+                                                <?php echo Form::select('OtherGuidingArea', $guidearea, $selectedarea->id, ['id'=>'target', 'class'=> 'form-control target']); ?>
+
+
+
+                                                  <?php /* ?>  <select id="target" name="OtherGuidingArea" class="form-control target" >
+                                                      <option value="{{ $selectedarea }}" selected>{{ $selectedarea }}</option>
+                                                      @foreach($guidearea as  $option)
+                                                      <option value="{{$option[0]}}" >
+                                                        {{$option}}
+                                                      </option>
+                                                      @endforeach
+                                                      </select>    
+                                                      <?php */ ?>
+
+                                                    <?php echo Form::hidden('id', null); ?>
+
+                                                    <span class="select-field"></span>
+                                                </div>
+                                                <div class="option-btns">
+                                                <span id="editMg" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                <a id="cancelMg" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                
+                                                <input type="submit" class="btn btn-success" id="saveMg" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                <?php echo Form::close(); ?>
+
+                                            </li>
+                                            <li>
+                                               
+                                                    <span>Other Guiding Area :</span>
+                                                    
+                                                   <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'OgForm']); ?>
+
+                                                <div id="textWrapperOg" class="field">
+                                                <?php $i=0; ?>
+                                            <?php foreach($selectedoarea as $p): ?>
+                                                <?php if($i == 0): ?>
+                                                <?php echo DB::table('guideareas')->where('id', $p)->value('guide_area'); $i++;?>
+                                                <?php else: ?>
+                                                <?php echo ", ".DB::table('guideareas')->where('id', $p)->value('guide_area'); $i++;?>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                                </div>
+                                                <div id="editInputOg" class="edit-field" style="display:none">
+                                                <div id="onchangehide" style=" ">
+                                                   <div class="form-group required" id="otherarea">
+                                                        
+                                                   <?php echo Form::select('OtherGuidingArea[]', $guidearea, $selectedoarea, ['class'=>'chosen-select form-control', 'multiple'] ); ?>
+
+                                                   <?php /* ?>
+                                                        <select class="chosen-select form-control" multiple="multiple" name="OtherGuidingArea[]" id="places">
+                                                            @foreach($guidearea as $place)
+                                                                <option value="{{$place}}" @foreach($selectedoarea as $p) @if($place === $p) selected="selected"@endif @endforeach>
+                                                                {{$place}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    <?php */ ?>
+
+                                                    </div><!--form control-->
+
+                                                    <?php echo Form::hidden('id', null); ?>
+
+                                                </div>
+                                                <div id="otherguidearea"></div>
+                                                </div>
+                                                <div class="option-btns">
+                                                <span id="editOg" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                <a id="cancelOg" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                
+                                                <input type="submit" class="btn btn-success" id="saveOg" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                <?php echo Form::close(); ?>
+
+                                               
+                                            </li>
+                                            <li>
+                                               
+                                                    <span>Language :</span>
+                                                   <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'LangForm']); ?>
+
+                                                <div id="textWrapperLang" class="field">
+                                                <?php $i=0; ?>
+                                            <?php foreach($selectedlang as $lang): ?>
+                                                <?php if($i == 0): ?>
+                                                <?php echo DB::table('languages')->where('id', $lang)->value('language'); $i++;?>
+                                                <?php else: ?>
+                                                <?php echo ", ".DB::table('languages')->where('id', $lang)->value('language'); $i++;?>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                           </div>
+                                                <div id="editInputLang" class="edit-field" style="display:none">
+
+                                                <?php echo Form::select('language[]', $guidelanguage, $selectedlang, ['class'=>'chosen-select form-control', 'multiple'] ); ?>
+
+
+                                                <?php /* ?> 
+                                                  <select class="chosen-select form-control" multiple="multiple" name="language[]" id="places">
+                                                            @foreach($guidelanguage as $language)
+                                                                <option value="{{$language}}" @foreach($selectedlang as $p) @if($language === $p) selected="selected"@endif @endforeach>{{$language}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                <?php */ ?>
+                                                <?php echo Form::hidden('id', null); ?>
+
+                                                </div>
+                                                <div class="option-btns">
+                                                <span id="editLang" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                <a id="cancelLang" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                
+                                                <input type="submit" class="btn btn-success" id="saveLang" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                <?php echo Form::close(); ?>
+
+                                                
+                                            </li>
+                                            <li>
+                                               
+                                                    <span>Specialized Skill/Location :</span>
+                                                   <?php echo Form::model($guide->profile, ['url' => '#', 'role' => 'form', 'id'=>'SpeForm']); ?>
+
+                                                <div id="textWrapperSpe" class="field"><?php echo e($guide->profile->specilizedarea); ?></div>
+                                                <div id="editInputSpe" class="edit-field" style="display:none">
+                                                   <?php echo Form::textarea('specilizedarea', null, ['size' => '50x5','class' => 'form-control', 'id'=>'experienceInput', 'placeholder'=>'eg: Everest Peak, Pokhara Tour, Kathmandu, Annapurna Trek, Trishuli Rafting, Ghandruk homestay, Nepali food cooking ...']); ?>
+
+
+                                                <?php echo Form::hidden('id', null); ?>
+
+                                                </div>
+                                                <div class="option-btns">
+                                                <span id="editSpe" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                                <a id="cancelSpe" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                                
+                                                <input type="submit" class="btn btn-success" id="saveSpe" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                                </div>
+                                                <?php echo Form::close(); ?>
+
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div> <!-- end profile-content -->
+
+                    <div class="about-me">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 section-title">
+                                <strong>About Me :</strong>
+                            </div>
+                            <div class="col-md-9 col-sm-12">
+                                <?php echo Form::model($guide, ['url' => '#', 'role' => 'form', 'id'=>'AboutForm']); ?>
+
+                                                    
+                                    <div id="textWrapperAbout" class="field"><?php echo e($guide->about); ?></div>
+                                    <div id="editInputAbout" class="edit-field" style="display:none">
+                                       <?php echo Form::textarea('about', null, ['size' => '30x5','class' => 'form-control']); ?>
+
+                                        <?php echo Form::hidden('id', null); ?>
+
+                                    </div>
+                                    <div class="option-btns">
+                                    <span id="editAbout" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+                                    <a id="cancelAbout" class="cancel-icon" href="javascript:void(0);" style="display:none"><!-- <i class="fa fa-times"></i> -->Cancel</a>
+                                    
+                                    <input type="submit" class="btn btn-success" id="saveAbout" value="<?php echo e(trans('strings.save_button')); ?>" style="display:none"/>
+                                    </div>     
+                                <?php echo Form::close(); ?>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 section-title">
+                                <strong>Professional License/Certificate</strong>
+                            </div>
+                            <div class="col-md-9 col-sm-12">
+                                <div class="certificate-img row">
+                                  <?php foreach($guide->License as  $gallery): ?>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="thumb-wrap">
+                                            <a class="fancybox bg-wrap" href="<?php echo e(asset($gallery->path)); ?>" data-fancybox-group="gallery" title="License" style="background-image:url(<?php echo e(asset($gallery->path)); ?>)"></a>
+                                            <?php echo Form::open(['url'=>'#','id'=>'licenseDeleteForm']); ?> 
+                                                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                                                <button type="submit" class="delete-btn " id="licenseButton" onclick="return confirm('Are you sure you want to delete this item?');">
+                                                    <i>&times;</i>
+                                                </button> 
+                                            <?php echo Form::close(); ?>
+
+                                        </div>
+                                    </div>
+                                  <?php endforeach; ?>
+                                        <div class="loader-overlaylicence" style="display: none;"><div class="custom-loader"></div></div>
+                                     
+           
+
+                                </div>
+                                <?php if($guide->CountLicense < 3): ?>
+                                <?php echo Form::open(); ?>
+
+                                  
+                                             <!-- <div class="licenseInput">
+                                               <span class="uploadButton"><i class="fa fa-camera"></i><span>Upload License</span>
+                                               <input 
+                                                      id="licensePic"
+                                                      name="licensePic"
+                                                      data-url="<?php echo e(route('frontend.guide.license.upload')); ?>"
+                                                      accept="image/*" 
+                                                      type="file"></span>
+                                                  
+                                                </div> -->  
+                                            <div class="licenseInput">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <span class="uploadButton btn-file btn">
+                                                            <i class="fa fa-camera"></i><span>Upload License</span>
+                                                            <input 
+                                                      id="licensePic"
+                                                      name="licensePic"
+                                                      data-url="<?php echo e(route('frontend.guide.license.upload')); ?>"
+                                                      accept="image/*" 
+                                                      type="file">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+                             <?php echo Form::close(); ?>
+
+                             <?php endif; ?>
+                              
+                            </div>
+                        </div>
+                    </div> <!-- end certificate  --> 
+
+                    <div class="calender">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 section-title">
+                                <strong>Calendar</strong>
+                            </div>
+                            <div class="col-md-9 col-sm-12">
+                                <div id="booking">
+                                  <div class="book-it-content">
+                                <form action="#" id="mybookingEditForm" method="POST">
+                                
+                                <input id="tokenData" type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+                                    <div class="demo first">
+                                    <h3 class="selectdates">Select Dates</h3>
+                                     <div id="simpliest-usage" class="box"></div>
+                                    </div>
+                                   <?php echo Form::hidden('id', $guide->id); ?>     
+                                    <div class="form-group">
+                                      <input type="submit" class="btn btn-danger" value="<?php echo e(trans('strings.save_button')); ?>" />
+                                    </div>
+                                    </form>
+                                  </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> <!-- Callender -->
+
+                    <div class="video">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 section-title">
+                                <strong>Videos</strong>
+                            </div>
+                            <div class="col-md-9 col-sm-12">
+                                <div class="video-gallery row">
+                                    <?php foreach($guide->limitvideos as  $gallery): ?>
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="thumb-wrap">
+                                            <a style="background-image:url(https://img.youtube.com/vi/<?php echo e($gallery->imagesmall); ?>/default.jpg)" data-fancybox-group="gallery" href="<?php echo e($gallery->path); ?>?fs=1&amp;autoplay=1" class="video bg-wrap fancy-box">
+                                            </a>
+
+                                            <?php echo Form::open(['route'=>'frontend.guide.video.delete','id'=>'myvideoDeleteForm']); ?> 
+                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <button type="submit" class="delete-btn " id="videoDeleteButton" onclick="return confirm('Are you sure you want to delete this video?');">
+                    <i>&times;</i>
+                </button> 
+                <?php echo Form::close(); ?>
+
+                                        </div>
+                                    </div>
+                                    <?php endforeach; ?>
+                                 </div>
+                                <a class="uploadButton btn-file btn" data-toggle="modal" data-target="#video-modal"><i class="fa fa-plus"></i> Upload files</a>
+                            </div>
+                        </div>
+                    </div> <!-- video -->
+
+                    <div class="gallery">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 section-title">
+                                <strong>Gallery</strong>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="img-gallery row">
+                                  <?php foreach($guide->limitimages as  $images): ?>
+                                  <div class="col-md-4 col-sm-6">
+                                   <div class="thumb-wrap">
+                                    <a class="fancybox bg-wrap" href="<?php echo e(asset( $images->path )); ?>" data-fancybox-group="gallery" title="<?php echo e($images->caption); ?> " style="background-image:url(<?php echo e(asset( $images->path )); ?>)"></a>
+                                        <?php echo Form::open(['url'=>'#','id'=>'galleryDeleteForm']); ?> 
+                                                <?php echo Form::hidden('id',$images->id); ?>
+
+                                                <button class="delete-btn " type="submit" id="imageButton" onclick="return confirm('Are you sure you want to delete this image?');">
+                                                    <i>&times;</i>
+                                                </button> 
+                                            <?php echo Form::close(); ?> 
+                                            </div>
+                                        
+                                 </div> 
+                                  <?php endforeach; ?>
+                                        <div class="loader-overlay"><div class="custom-loader"></div></div>
+           
+
+                                </div>
+                                <?php echo Form::open(); ?>
+
+                                  
+                                             <!-- <div class="galleryInput">
+                                              <span class="uploadButton"><i class="fa fa-camera"></i><span>Upload Images</span>
+                                              <input 
+                                                     id="galleryPic"
+                                                     name="galleryPic"
+                                                     data-url="<?php echo e(route('frontend.guide.gallery.upload')); ?>"
+                                                     accept="image/*" 
+                                                     type="file"
+                                                     multiple>
+                                                                                          </span>
+                                                 
+                                               </div>  --> 
+                                                <div class="galleryInput">
+                                                    <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <span class="uploadButton btn-file btn">
+                                                                    <i class="fa fa-camera"></i><span>Upload Images</span>
+                                                                        <input 
+                                                                         id="galleryPic"
+                                                                         name="galleryPic"
+                                                                         data-url="<?php echo e(route('frontend.guide.gallery.upload')); ?>"
+                                                                         accept="image/*" 
+                                                                         type="file"
+                                                                         multiple>
+                                                                </span>
+                                                            </span>
+                                                    </div>
+                                                </div>
+
+                                              <?php echo Form::hidden('id', $guide->id); ?>
+
+                             <?php echo Form::close(); ?>
+
+                              
+                            </div>
+                        </div>
+                    </div> <!-- end certificate  --> 
+                </div> <!-- end col-md-9 -->
+            </div> <!-- end row -->
+        </div> <!-- container -->
+    </section>
+<?php echo $__env->make('frontend.guide.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('before-scripts-end'); ?>
+    <script>
+        var language = ['Afrikaans','Albanian','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bengali','Bosnian','Bulgarian','Burmese','Buryat','Cambodian','Cantonese','Catalan','Croatian','Czech','Danish','Dutch','Dzongkha','English','Esperanto','Estonian','Filipino','Finnish','French','Galician','Georgian','German','Greek','Gujurati','Haitian Creole','Hebrew','Hindi','Hungarian','Icelandic','Indonesian','Irish','Italian','Japanese','Jurchen','Kalmyk','Kannada','Kazakh','Kirghiz','Korean','Lao','Latin','Latvian','Lithuanian','Macedonian','Malay','Malayalam','Maltese','Mandarin','Marathi','Mongolian','Nepali','Norwegian','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Sakha','Serbian','Slovak','Slovenian','Spanish','Swahili','Swedish','Tamil','Telugu','Thai','Turkish','Ukrainian','Urdu','Vietnamese','Welsh','Yiddish'];
+
+        var guidingArea =['Tour','Safari','Rafting','Peaking-Climbing','Yoga-Meditation','Trekking','Bird-Watching','Advanture-Sports','Cycling'];
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+    <?php echo HTML::script('blueimp/load-image.all.min.js'); ?>
+
+    <?php echo HTML::script('blueimp/canvas-to-blob.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.iframe-transport.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-process.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-image.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-validate.js'); ?>
+
+
+    <?php echo HTML::script('js/customUpload.js'); ?>
+
+    <?php echo HTML::script('js/tag-it.min.js'); ?>
+
+    <?php echo HTML::script('js/profile.js'); ?>
+
+     <script language="javascript">
+        print_country("country","<?php echo e($guide->country); ?>");
+        $("#state").append(new Option("<?php echo e($guide->state); ?>", "<?php echo e($guide->state); ?>"));
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-styles-end'); ?>
+  <?php echo HTML::style('blueimp/css/jquery.fileupload.css'); ?>
+
+  <?php echo HTML::style('blueimp/css/jquery.fileupload-ui.css'); ?>
+
+    <?php echo HTML::style('css/jquery.tagit.css'); ?>
+
+    <?php echo HTML::style('css/tagit.ui-zendesk.css'); ?>
+
+  <?php echo HTML::script('js/countries.js'); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,27 @@
+<?php $__env->startSection('title', trans('menus.pages.create')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.page_management')); ?>
+
+        <small><?php echo e(trans('menus.pages.create')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="#"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li class="active"><?php echo link_to_route('admin.pages.index', trans('menus.page_management')); ?></li>
+    <li class="active"><?php echo trans('menus.pages.create'); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('backend.pages.includes.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo form($form); ?>
+
+     <?php echo $__env->make('backend.includes.tinymce', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+   
+
+    <div class="clearfix"></div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

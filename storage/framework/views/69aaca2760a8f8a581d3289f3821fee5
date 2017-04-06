@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        
+        <meta name="_token" content="<?php echo e(csrf_token()); ?>" />
+        <title><?php echo $__env->yieldContent('title', app_name()); ?></title>
+        <meta name="description" content="<?php echo $__env->yieldContent('meta_description', 'GuideNp'); ?>">
+        <meta name="author" content="<?php echo $__env->yieldContent('author', 'GuideNp'); ?>">
+        <?php echo $__env->yieldContent('meta'); ?>
+
+        <?php echo $__env->yieldContent('before-styles-end'); ?>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <?php echo HTML::style('css/font-awesome/css/font-awesome.min.css'); ?>
+
+         <?php echo HTML::style('css/backend/mdp.css'); ?>
+
+        <?php echo HTML::style('css/backend/prettify.css'); ?>
+
+        <?php echo HTML::style('css/backend/AdminLTE.min.css'); ?>
+
+        <?php echo HTML::style('css/bootstrap.css'); ?>
+
+        <?php echo HTML::style('css/backend/chosen.min.css'); ?>
+
+        <?php echo HTML::style('css/jquery.datepick.css'); ?>
+
+        <?php echo HTML::style('css/backend/jquery.wizard.min.css'); ?>
+
+        <?php echo HTML::style('css/backend/skin-blue.min.css'); ?>
+
+        <?php echo HTML::style('css/backend/skin-orange.css'); ?>
+
+        <?php echo HTML::style('css/jquery.dataTables.min.css'); ?>
+
+        <?php echo HTML::style('css/backend/custom.css'); ?>
+
+        <?php echo HTML::style('css/backend/blue.css'); ?>
+
+        <?php /* <?php echo HTML::style('css/backend/stylee.css'); ?> */ ?>
+        <?php echo $__env->yieldContent('after-styles-end'); ?>
+
+        <?php echo HTML::script('js/jquery-1.11.2.min.js'); ?>
+
+        <?php echo HTML::script('js/jquery-ui.js'); ?>
+
+        <?php echo HTML::script('js/backend/jquery-ui.multidatespicker.js'); ?>
+
+
+        <!-- DataTables -->
+          <?php echo HTML::script('js/backend/jquery.dataTables.min.js'); ?>
+
+          <?php echo HTML::script('js/backend/chosen.jquery.min.js'); ?>
+
+          <?php echo HTML::script('js/backend/moment.js'); ?>
+
+          <!-- <?php echo HTML::script('js/backend/jquery.wizard.js'); ?> -->
+          <?php echo HTML::script('js/backend/wizardformtab.js'); ?>
+
+
+       <script>
+          var base_url = '<?php echo e(URL::to("")); ?>';
+          var full_current_url = '<?php echo e(URL::full()); ?>';
+          var current_url = '<?php echo e(URL::current()); ?>';
+        </script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $("select.chosen-select").chosen();
+           
+
+//             $(function() {
+//     $('input[name="daterange"]').daterangepicker();
+// });
+                    })
+        </script>
+        <?php echo HTML::script('js/backend/lang-css.js'); ?>
+
+  <?php echo HTML::script('js/backend/prettify.js'); ?>
+
+     
+        
+    </head>
+    <body class="hold-transition skin-orange sidebar-mini">
+        <div class="wrapper">
+          <?php echo $__env->make('backend.includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+          <?php echo $__env->make('backend.includes.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+          <!-- Content Wrapper. Contains page content -->
+          <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+              <?php echo $__env->yieldContent('page-header'); ?>
+              <ol class="breadcrumb">
+                <?php echo $__env->yieldContent('breadcrumbs'); ?>
+              </ol>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+              <?php echo $__env->make('includes.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <?php echo $__env->yieldContent('content'); ?>
+            </section><!-- /.content -->
+          </div><!-- /.content-wrapper -->
+
+          <?php echo $__env->make('backend.includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div><!-- ./wrapper -->
+       <?php echo $__env->yieldContent('before-scripts-end'); ?>
+    
+        
+       
+        <?php echo $__env->yieldContent('after-scripts-end'); ?>
+        <?php echo HTML::script('js/vendor/bootstrap.min.js'); ?>
+
+        <?php echo HTML::script('js/backend/custom.js'); ?>
+
+        <?php echo HTML::script('js/backend/app.js'); ?>
+
+        <?php echo HTML::script('js/backend/icheck.min.js'); ?>
+
+        
+    </body>
+</html>

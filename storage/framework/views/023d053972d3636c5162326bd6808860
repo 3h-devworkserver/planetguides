@@ -1,0 +1,78 @@
+<?php $__env->startSection('title'); ?> Search Results | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('banner'); ?>
+	<section class="banner">
+	<div class="search-wrap">
+      	<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <?php echo $__env->make('frontend.includes.searchbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+         		</div>
+        	</div>
+      	</div>
+    </div>
+    </section>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h2 class="text-center"><?php echo e($count); ?> Guides</h2>
+			</div>
+		</div>
+	</div>
+	<div class="guides">
+		<div class="row">
+		<?php //echo"<pre>"; print_r($profiles); die();?>
+		<?php foreach($guides as $guide): ?>
+		<?php //echo"<pre>"; print_r($guide->experience); //die();?>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href="<?php echo e(URL::to('guide/'.$guide->username)); ?>">
+					<?php if(!empty($guide->profileImg)): ?>
+						<div style="background-image:url(<?php echo e(asset($guide->profileImg)); ?>)"></div>
+					<?php elseif(!empty($guide->avatar)): ?>
+						<div style="background-image:url(<?php echo e(asset($guide->avatar)); ?>)"></div>
+					<?php else: ?>
+						<div style="background-image:url(<?php echo e(asset('/images/dummy.png')); ?>)"></div>
+					<?php endif; ?>
+					</a>
+					<div class="caption">
+						<h3><a href="profile.html"><?php echo e($guide->name); ?></a></h3>
+						<div class="experience pull-left">
+						Experience : Since <?php foreach($profiles as $p){ if($p->user_id == $guide->user_id){ echo $p->experience;}} ?>
+
+							<!-- Experience : <?php $time = Carbon\Carbon::now()->format('Y'); 
+											$time = Carbon\Carbon::parse($time);
+						 	foreach($profiles as $p){ if($p->user_id == $guide->user_id){ $dbdate = Carbon\Carbon::parse($p->experience);
+							echo $dbdate->diffInYears($time);}} ?> Years -->
+						</div>
+						<div class="rating pull-right">
+							<ul>
+								<li><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+<?php endforeach; ?>
+
+				</div>
+			</div>
+		</div> <!--end row-->
+
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<button class="btn btn-primary cust-btn-lg"> View more</button>
+			</div>
+		</div>
+		
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

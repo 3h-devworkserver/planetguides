@@ -1,0 +1,47 @@
+<div class="col-md-4 col-sm-12">
+    <div class="book-it">
+        <div class="book-it-price-day">
+            <strong>$<span id="guidePrice"><?php echo e($guide->price); ?></span><span class="pull-right">per day</span></strong>
+        </div>
+        <div class="book-it-content">
+            <?php echo Form::open(['route' => 'frontend.guide.booking.process','id'=>'bookingFormId']); ?>
+
+            <div class="book-it-form" style="margin:0px 0 10px;">
+                <label>Select days for booking</label>
+                <div id="disable-dates">
+                    
+                </div>
+                    
+                
+            </div>
+            <div class="book-it-status" style="display: none" style="margin:0px 0 10px;">
+                <table width="100%">
+                    <th colspan="2">
+                        These dates are Avaliable 
+                    </th>
+                    <tr>
+                        <td id="priceCalculation" width="55%"></td>
+                        <td align="right" id="calculatedPrice" width="40%"></td>
+                    </tr>
+                    <tr>
+                        <td>Service fee</td>
+                        <td id="serviceFee" align="right"></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="totalSumPrice" align="right"></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <?php echo Form::hidden('gid', $guide->user_id); ?>
+
+            <input type="hidden" value="" id="dates" name="dates" />
+            <input type="hidden" value="" id="date_count" name="totalDays" />
+            
+            <button <?php if(Auth::guest()): ?> id='loginModal' type='button'<?php else: ?> id ='submit-booking-request' type='submit'<?php endif ?> class="btn btn-danger">Request to Book</button>
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+</div>

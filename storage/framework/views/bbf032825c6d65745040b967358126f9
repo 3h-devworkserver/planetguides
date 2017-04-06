@@ -1,0 +1,58 @@
+<?php $__env->startSection('content'); ?>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+ 			<?php echo $__env->make('includes.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<div class="panel panel-default">
+
+				<div class="panel-heading"><?php echo e(trans('labels.reset_password_box_title')); ?></div>
+				<div class="panel-body">
+
+					<?php echo Form::open(['to' => 'password/reset', 'class' => 'form-horizontal', 'role' => 'form', 'id'=>'resetForm']); ?>
+
+
+						<input type="hidden" name="token" value="<?php echo e($token); ?>">
+						<div class="form-group">
+							<?php echo Form::label('email', trans('validation.attributes.email'), ['class' => 'col-md-4 control-label']); ?>
+
+							<div class="col-md-6">
+								<?php echo Form::input('email', 'email', null, ['class' => 'form-control', 'required']); ?>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<?php echo Form::label('password', trans('validation.attributes.password'), ['class' => 'col-md-4 control-label']); ?>
+
+							<div class="col-md-6">
+								<?php echo Form::input('password', 'password', null, ['class' => 'form-control', 'required', 'minlength' => '6']); ?>
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<?php echo Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), ['class' => 'col-md-4 control-label']); ?>
+
+							<div class="col-md-6">
+								<?php echo Form::input('password', 'password_confirmation', null, ['class' => 'form-control', 'required', 'minlength' => '6']); ?>
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+								<?php echo Form::submit(trans('labels.reset_password_button'), ['class' => 'btn btn-primary']); ?>
+
+							</div>
+						</div>
+
+					<?php echo Form::close(); ?>
+
+
+				</div><!-- panel body -->
+
+            </div><!-- panel -->
+
+        </div><!-- col-md-8 -->
+
+    </div><!-- row -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

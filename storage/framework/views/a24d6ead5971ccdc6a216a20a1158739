@@ -1,0 +1,3 @@
+<div><a href="http://guidenp.com"> <img style="width: 72px;" src="http://guidenp.com/images/logo.png" alt="" /> </a></div>
+<strong>Hello Admin,</strong><br /><br />Recently a user has been registered in <a href="http://guidenp.devworkserver.com">guidenp.devworkserver.com</a> .<br /> The information of user:<br />Fullname : <?php echo e($user-&gt;name); ?><br />Email : <?php echo e($user-&gt;email); ?><br />
+<p>Login to view full details <a href="http://guidenp.devworkserver.com/admin">Admin Login</a></p>

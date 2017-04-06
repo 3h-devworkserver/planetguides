@@ -1,0 +1,48 @@
+<?php
+use App\Models\Access\User\User;
+?>
+
+<?php $__env->startSection('title'); ?> Favorite Guides | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>	
+	<section class="dashboard">
+		<div class="container">
+			<div class="wrapper">
+				<div class="row">
+				<?php if(Session::has('message')): ?>
+					<div class="col-md-6 col-md-offset-3 alert alert-info">
+						<?php echo e(Session::get('message')); ?>
+
+					</div>
+				<?php endif; ?>
+					<div class="col-md-12">
+						<div class="recentactives">
+							<h1>My Favorite Guides</h1>
+						
+						<?php foreach($favorites as $favorite): ?>
+							<div class="post">
+								<div class="row">
+									<div class="col-md-10">
+										<div class="user">
+											<a href="<?php echo e(URL::to('guide/'.User::find($favorite->guide_id)->username)); ?>" style="background-image:url(<?php echo e(User::find($favorite->guide_id)->picture); ?>)"></a>
+											<div class="name" style="padding-top: 2px;">
+												<h4 style="line-height: 18px;"><?php echo e(ucwords(User::find($favorite->guide_id)->name)); ?></h4>
+												<a class="btn btn-danger btn-block" style="width:200px;height: 35px;margin-top:10px;" href="<?php echo e(route('frontend.traveller.delete.favorites', $favorite->guide_id)); ?>">
+	                                                 <i class="fa fa-heart"></i> Remove Favorite
+	                                            </a>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

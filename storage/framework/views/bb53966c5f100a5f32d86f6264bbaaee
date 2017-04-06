@@ -1,0 +1,519 @@
+<?php $__env->startSection('title', trans('menus.user_management') . ' | ' . trans('menus.user_profile')); ?>
+<?php $__env->startSection('page-header'); ?>
+<h1>
+Add Guide
+</h1>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('breadcrumbs'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+
+<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+<script type=text/javascript>
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+    });
+ </script>
+
+
+  
+<style type="text/css">
+      .demo { position: relative; }
+      .demo i {
+        position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+      }
+      </style>
+
+      <script type="text/javascript">
+        $(function() {
+          $('#simpliest-usage').multiDatesPicker({ minDate: 0});
+        $('.demo .code').each(function() {
+          eval($(this).attr('title','NEW: edit this code and test it!').text());
+        })
+      });
+    </script>
+<div class="row">
+  
+    <!-- Profile Image -->
+    <div class="box box-primary">
+      
+        <div class="col-md-12">
+          <div id="successmsg" style="display: none;">New User Guide is created.</div>
+          <div id="successimgupload" style="display: none;">Image  is successfully added.</div>
+          <div id="failedmsg" style="display: none;"></div>
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#settings" data-toggle="tab">General Info</a></li>
+              <li id="userlicense" style="display: none;"><a href="#license" data-toggle="tab">Certification</a></li>
+              <li id="userimage" style="display: none;"><a href="#images" data-toggle="tab">Images</a></li>
+              <li id="uservideos" style="display: none;"><a href="#videos" data-toggle="tab">Videos</a></li>
+              <li id="userbooking" style="display: none;"><a href="#booking" data-toggle="tab">Booking Availability</a></li>
+            </ul>
+            <div class="tab-content">
+              
+                <div class="active tab-pane" id="settings">
+                          
+                          <!-- <?php echo Form::open(['route' => 'admin.access.users.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']); ?> -->
+                          <?php echo Form::open(['url' => '','role' => 'form', 'id'=>'addGuide','class' => 'form-horizontal',]); ?>
+
+                          <div class="form-group required">
+                            <?php echo Form::label('fname', trans('validation.attributes.fname'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                            <div class="col-lg-10">
+                              <?php echo Form::text('fname', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.fname'), 'required']); ?>
+
+                            </div>
+                            </div><!--form control-->
+                            <div class="form-group required">
+                              <?php echo Form::label('name', trans('validation.attributes.lname'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                              <div class="col-lg-10">
+                                <?php echo Form::text('lname', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.lname')]); ?>
+
+                              </div>
+                              </div><!--form control-->
+                              <div class="form-group required">
+                                <?php echo Form::label('email', trans('validation.attributes.email'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                <div class="col-lg-10">
+                                  <?php echo Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email'), 'required']); ?>
+
+                                </div>
+                                </div><!--form control-->
+
+                                <div class="form-group required">
+                                <?php echo Form::label('password', trans('validation.attributes.password'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                <div class="col-lg-10">
+                                  <?php echo Form::password('password', array('class' => 'form-control')); ?>
+
+                                </div>
+                                </div><!--form control-->
+
+                                <div class="form-group required">
+                                <?php echo Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                <div class="col-lg-10">
+                                <?php echo Form::password('password_confirmation', array('class' => 'form-control')); ?>
+
+                                </div>
+                                </div><!--form control-->
+                                <div class="form-group required">
+                                <?php echo Form::label('gender', trans('validation.attributes.gender'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                <div class="col-lg-10">
+                                  <?php echo Form::select('gender', array('Male' => 'Male', 'Female' => 'Female', 'Other' =>'Other'), 'null', array('class'=>'form-control')); ?>
+
+
+                                </div>
+                                </div><!--form control-->
+                                <div class="form-group required">
+                                <?php echo Form::label('experience', trans('validation.attributes.experience'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                <div class="col-lg-10">
+                                  <?php echo Form::selectYear('year', 1992, Carbon\Carbon::today()->format('Y'), Carbon\Carbon::today()->format('Y'), ['class' => 'form-control']); ?>
+
+
+                                </div>
+                                </div><!--form control-->
+                                <div class="form-group required">
+                                  <?php echo Form::label('mainArea', trans('validation.attributes.mainArea'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                  <div class="col-lg-10">
+                                  <select id="target" name="mainGuidingArea" class="form-control target" >
+                                  <option value="" selected disabled>Please Choose Main Guide area...</option>
+                                 
+                                  <?php foreach($options as  $option): ?>
+                                  <option value="<?php echo e($option); ?>" >
+                                    <?php echo e($option); ?>
+
+                                  </option>
+                                  <?php endforeach; ?>
+                                  </select>
+                                  </div>
+                                  </div><!--form control-->
+                                  <div id="otherguidearea"></div>
+                                <div class="form-group required">
+                                  <?php echo Form::label('about', trans('validation.attributes.about'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                  <div class="col-lg-10">
+                                    <?php echo Form::textarea('about', null, ['class' => 'form-control','size' => '30x5']); ?>
+
+                                  </div>
+                                  </div><!--form control-->
+
+                                  <div class="form-group required">
+                                  <?php echo Form::label('language', trans('validation.attributes.language'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                  <div class="col-lg-10">
+                                  <select name="language[]" multiple="multiple" class="chosen-select form-control">
+                                 
+                                  <?php foreach($language as  $languag): ?>
+                                  <option value="<?php echo e($languag); ?>" >
+                                    <?php echo e($languag); ?>
+
+                                  </option>
+                                  <?php endforeach; ?>
+                                  </select>
+                                  
+                                  </div>
+                                  </div><!--form control-->
+                                  <div class="form-group required" id="otherarea">
+                                      <?php echo Form::label('specilizedarea', trans('validation.attributes.specilizedarea'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                      <div class="col-lg-10">
+                                      <?php echo Form::text('specilizedarea', ' ', array('class' => 'form-control')); ?>
+
+                                      </div>
+                                  </div><!--form control-->
+                                  <div class="form-group required">
+                                    <?php echo Form::label('price', trans('validation.attributes.price'), ['class' => 'col-lg-2 col-md-2 control-label']); ?>
+
+                                    <div class="col-lg-10">
+                                      <?php echo Form::input('number','price', '', ['class' => 'form-control']); ?>
+
+                                    </div>
+                                    </div><!--form control-->
+                                  <div class="form-group">
+                                      <label class="col-lg-2 col-md-2 control-label">Active</label>
+                                      <div class="col-md-8">
+                                        <input type="checkbox" value="1" name="status" />
+                                      </div>
+                                      </div><!--form control-->
+                                      <div class="form-group">
+                                        <label class="col-lg-2 col-md-2 control-label">Confirm</label>
+                                        <div class="col-md-8">
+                                          <input type="checkbox"  value="1" name="confirmed"  />
+                                        </div>
+                                        </div><!--form control-->
+                                       
+                                        <!-- <div class="form-group">
+                                          <label class="col-lg-2 col-md-2 control-label">Certified</label>
+                                          <div class="col-md-8">
+                                            <input type="checkbox"  value="1" name="certified"  /> Check here to certify this user
+                                          </div>
+                                          </div> -->
+                                         
+                                          <div class="form-group required">
+                                              
+                                              <div class="col-lg-3" style="display: none;">
+                                                  
+                                                          <input type="radio"  value="2" name="assignees_roles" id="role-2" checked /> <label for="role-2">Guide</label>
+
+                                                          
+                                                      
+                                              </div>
+                                          </div><!--form control-->
+                                          <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                              <div class="pull-right">
+                                              <?php echo Form::submit(trans('strings.save_button'), ['class' => 'btn btn-success']); ?>
+
+                                              </div>
+                                            </div>
+                                          </div>
+                                         
+                    <?php echo Form::close(); ?>                                          
+                </div>         
+                                       
+        <div class="tab-pane" id="images">
+          <div class="row wrap-all">
+              <?php echo Form::open(['url'=>'#','id'=>'gallerySetProfileForm']); ?>
+
+            <div class="gallery-list" id="images-list">
+
+                  <div id="galleryshow"></div>
+                  
+            </div>
+            <div class="imagesUploadArea">
+              <div class="thumbnail browse-image">
+                   <div class="galleryUploadButton">
+                       <span class="uploadButton"><i class="fa fa-plus"></i></span>
+                          <input 
+                              id="galleryPicture"
+                              name="galleryPic"
+                              data-url="<?php echo e(route('frontend.guide.addgallery.upload')); ?>"
+                              accept="image/*" 
+                              type="file"
+                              multiple>
+                    </div> 
+                    <input  type="hidden" name="id">
+                <div class="imglicloader" style="display: none;">
+                <?php echo Form::image('images/ajax-loader.gif'); ?>
+
+                </div>
+
+              </div>
+              <div class="loader-overlay"><div class="custom-loader"></div></div>
+            </div>
+
+            <div class="form-group btmsave">
+                    <div class="col-md-12">
+                      <div class="pull-right">
+                      <?php echo Form::submit(trans('strings.save_button'), ['class' => 'btn btn-success', 'id' => 'submit']); ?>
+
+                      </div>
+                    </div>
+                    </div>
+              <?php echo Form::close(); ?>
+
+          </div>
+            
+        </div>
+        <div class="tab-pane" id="license">
+          <div class="row">
+             <div class="gallery-list" id="images-list">
+              <div id="licenseshow"></div>
+        </div>
+            <div class="imagesUploadArea">
+              <div class="thumbnail browse-image">
+
+                <?php echo Form::open(); ?>
+
+                   <div class="galleryUploadButton">
+                       <span class="uploadButton"><i class="fa fa-plus"></i></span>
+                          <input 
+                              id="licensePicture"
+                              name="licensegalleryPic"
+                              data-url="<?php echo e(route('backend.guide.license.upload')); ?>"
+                              accept="image/*" 
+                              type="file"
+                              multiple>
+                    </div> 
+                    <input  type="hidden" name="id">
+                    
+                <?php echo Form::close(); ?>
+
+                <div class="imglicloader" style="display: none;">
+                <?php echo Form::image('images/ajax-loader.gif'); ?>
+
+                </div>
+                </div>
+                <div class="loader-overlay"><div class="custom-loader"></div></div>
+          </div>
+          <div class="col-md-12">
+          <?php echo Form::open(['url' => '#','method'=>'POST', 'role' => 'form',  'files'=> false, 'id'=>'mylicenseForm']); ?>
+
+                <div class="checkbox chkbox">
+                      <input type="checkbox"  value="1" name="certified" /> Check here to certify this user
+                </div>
+
+                <input  type="hidden" name="id">
+                    
+                <div class="form-group">
+                      <input type="submit" class="btn btn-success" value="<?php echo e(trans('strings.save_button')); ?>" />
+                </div>
+                <?php echo Form::close(); ?>
+
+          </div>
+        </div>
+        
+           
+        </div>
+
+        <div class="tab-pane" id="videos">
+          <div class="row">
+          <div class="gallery-list"  id="videos-list">
+                <div id="displayvideo"></div>
+            </div>
+            <div class="imagesUploadArea">
+              <div class="thumbnail browse-image">
+                 <a  data-toggle="modal" data-target="#video-modal" class="bg-image">
+                    <div class="galleryUploadButton"><span class="uploadButton"><i class="fa fa-plus"></i></span></div>
+                  </a>
+                <div class="galleryUploadProcess"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="booking">
+          <div class="book-it-content">
+          <?php echo Form::open(['url' => '#','method'=>'POST', 'role' => 'form',  'files'=> false, 'id'=>'mybookingForm']); ?>
+
+            <!-- <?php echo Form::open(['route' => 'frontend.guide.booking.process']); ?> -->
+            <div class="demo first">
+            <h3 class="selectdates">Select Dates</h3>
+            <div id="simpliest-usage" class="box"></div>
+            </div>
+           
+            <input  type="hidden" name="id">
+                    
+            <div class="form-group">
+              <input type="submit" class="btn btn-success" value="<?php echo e(trans('strings.save_button')); ?>" />
+            </div>
+            <?php echo Form::close(); ?>
+
+          </div>
+        </div>
+
+
+      </div><!-- /.tab-content -->
+     </div><!-- /.nav-tabs-custom -->
+     </div>
+     </div>
+     </div>
+    
+  
+    <div class="modal fade" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="myVideoLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Embed Your Video From Youtube</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="row">
+                     <div class="video-message"></div>
+                        <?php echo Form::open(['url' => '', 'role' => 'form', 'id'=>'addVideoForm']); ?>
+
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <?php echo Form::input('text', 'url',null, ['class' => 'form-control', 'id' => 'url','placeholder' => trans('validation.attributes.youtubeUrl'), 'required']); ?>
+
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">    
+                                        <?php echo Form::input('text', 'caption',null, ['class' => 'form-control', 'id' => 'caption','placeholder' => trans('strings.caption')]); ?>
+
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input  type="hidden" name="id">
+                                        <?php echo Form::submit(trans('labels.button.submit'), ['class' => 'btn btn-defaultn btn-primary']); ?>
+
+                                    </div>
+                                  </div>
+                                     <div class="loader-overlay"><div class="custom-loader"></div></div>
+                       <?php echo Form::close(); ?>
+
+                    </div>
+                    </div>
+            </div>
+        </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('after-scripts-end'); ?>
+  <?php echo HTML::script('js/backend/access/permissions/script.js'); ?>
+
+  <?php echo HTML::script('js/backend/access/users/script.js'); ?>
+
+  <?php echo HTML::script('blueimp/load-image.all.min.js'); ?>
+
+  <?php echo HTML::script('blueimp/canvas-to-blob.js'); ?>
+
+  <?php echo HTML::script('blueimp/jquery.iframe-transport.js'); ?>
+
+  <?php echo HTML::script('blueimp/jquery.fileupload.js'); ?>
+
+  <?php echo HTML::script('blueimp/jquery.fileupload-process.js'); ?>
+
+  <?php echo HTML::script('blueimp/jquery.fileupload-image.js'); ?>
+
+  <?php echo HTML::script('blueimp/jquery.fileupload-validate.js'); ?>
+
+  <?php echo HTML::script('fancybox/jquery.fancybox.js?v=2.1.5'); ?>
+
+  <?php echo HTML::script('js/customUpload.js'); ?>
+
+  <?php echo HTML::script('js/backend/customCalendarbackend.js'); ?>
+
+  <?php echo HTML::script('js/backend/daterangepicker.js'); ?>
+
+
+ 
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('after-styles-end'); ?>
+  <?php echo HTML::style('fancybox/jquery.fancybox.css'); ?>
+
+  <?php echo HTML::style('blueimp/css/jquery.fileupload.css'); ?>
+
+  <?php echo HTML::style('blueimp/css/jquery.fileupload-ui.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('after-scripts-end'); ?>
+
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '#loadmore-review', function (e) {
+            e.preventDefault();
+            $('#loadmore-pagination #loadmore-loader').show();
+            $('#loadmore-pagination #loadmore-review').hide();
+            $.ajax({
+                type:'GET',
+                url : $(this).attr('href'),
+                }).done(function (data) {
+                    $('#loadmore-pagination').remove();
+                    $('#loadmore-pagination #loadmore-loader').hide();
+                    $('#loadmore-pagination #loadmore-review').show();
+                    $('.review-list #reviews-listing').append(data.html);
+                })
+            });
+        });
+
+$(function() {
+      prettyPrint();
+    });
+</script>
+
+    <?php echo HTML::script('js/customCalendar.js'); ?>
+
+    <?php echo HTML::script('js/expanding.js'); ?>
+
+    <?php echo HTML::script('js/starrr.js'); ?>
+
+
+  <script type="text/javascript">
+    $(function(){
+      // initialize the autosize plugin on the review text area
+      $('#new-review').autosize({append: "\n"});
+      var reviewBox = $('#post-review-box');
+      var newReview = $('#new-review');
+      var openReviewBtn = $('#open-review-box');
+      var closeReviewBtn = $('#close-review-box');
+      var ratingsField = $('#ratings-hidden');
+      openReviewBtn.click(function(e)
+      {
+        reviewBox.slideDown(400, function()
+          {
+            $('#new-review').trigger('autosize.resize');
+            newReview.focus();
+          });
+        openReviewBtn.fadeOut(100);
+        closeReviewBtn.show();
+      });
+      closeReviewBtn.click(function(e)
+      {
+        e.preventDefault();
+        reviewBox.slideUp(300, function()
+          {
+            newReview.focus();
+            openReviewBtn.fadeIn(200);
+          });
+        closeReviewBtn.hide();
+        
+      });
+      // If there were validation errors we need to open the comment form programmatically 
+      <?php if($errors->first('comment') || $errors->first('rating')): ?>
+        openReviewBtn.click();
+      <?php endif; ?>
+      // Bind the change event for the star rating - store the rating value in a hidden field
+      $('.starrr').on('starrr:change', function(e, value){
+        ratingsField.val(value);
+      });
+    });
+  </script>
+
+<?php echo HTML::script('datepicker/js/bootstrap-datepicker.js'); ?>
+
+<?php echo HTML::script('datepicker/js/foundation-datepicker.js'); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

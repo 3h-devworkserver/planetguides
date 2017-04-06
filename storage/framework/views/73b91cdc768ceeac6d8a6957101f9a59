@@ -1,0 +1,80 @@
+<?php $__env->startSection('title'); ?> Recent Activity | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>	
+	<section class="dashboard">
+		<div class="profile">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="profile-img pull-left">
+					        <span class="avatar"><i class="fa fa-user"></i></span>
+					        <label class="username"><?php echo e(Auth::user()->username); ?></label>
+					    </div>
+
+					    <div class="view-profile pull-right">
+					        <a class="btn btn-danger" href="<?php echo e(route('frontend.traveller.profile')); ?>">View Profile</a>
+					    </div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="container">
+			<div class="wrapper">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="recentactives">
+							<h1>Recently Addes Guides</h1>
+						
+						<?php foreach($bookings as $booking): ?>
+							<div class="post">
+								<div class="row">
+									<div class="col-md-10">
+										<div class="user">
+											<a href="<?php echo e(URL::to('guide/'.$booking->user->username)); ?>" style="background-image:url(<?php echo e($booking->user->picture); ?>)"></a>
+											<div class="name">
+												<h5><?php echo e($booking->user->name); ?></h5>
+												<span><?php echo e($booking->user->experience); ?>  
+												<?php if($booking->user->experience<'2'): ?>
+                                                Year
+                                                <?php else: ?>
+                                                Years
+                                                <?php endif; ?>
+                                                (experience)</span>
+												<div>
+													<span class="rating average">
+														<span><?php echo e($booking->user->guide->rating_cache); ?></span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 text-center">
+										<span class="booked">Booked <?php echo e($booking->created_at->diffForHumans()); ?></span>
+											<span class="label label-success">Approved</span>
+										<button class="btn btn-primary cust-btn-sm">View Detail</button>
+										<!-- Cancel Button added -->
+										<?php if($booking->status == 'booked'): ?>
+										<?php
+										$datess = explode(',', $booking->dates);
+										?>
+											<?php if(strtotime($datess[0]) >= time()): ?>
+												<a href="<?php echo e(route('frontend.traveller.cancel.booking', $booking->id)); ?>" class="btn btn-warning cust-btn-sm" style="margin-top:5px;">Request Cancel</a>
+											<?php endif; ?>
+										<?php elseif($booking->status == 'cancel requested'): ?>
+											<span class="label label-danger">Cancel Requested</span>
+										<?php else: ?>
+											<span class="label label-danger">Booking Canceled</span>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+						<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

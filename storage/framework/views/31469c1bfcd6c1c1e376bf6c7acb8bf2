@@ -1,0 +1,24 @@
+<?php $__env->startSection('title', 'Unapproved License'); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.unapproved_license')); ?>
+
+        <small>List of unapproved license</small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li class="active"><?php echo trans('menus.unapproved_license'); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php echo $table; ?>
+
+
+    <div class="clearfix"></div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

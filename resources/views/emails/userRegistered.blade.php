@@ -1,0 +1,1 @@
+Hello Admin,<br /><br />Recently a user has been registered in <a href="http://guidenp.devworkserver.com">guidenp.devworkserver.com</a> .<br /> The information of user:<br />Fullname : {{ $user->name }}<br />Email : {{ $user->email }}<br /><p> Login to view full details <a href="http://guidenp.devworkserver.com/admin">Admin Login</a>

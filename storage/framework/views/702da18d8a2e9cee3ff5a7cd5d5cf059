@@ -1,0 +1,203 @@
+<?php $__env->startSection('title', trans('menus.role_management') . ' | ' . trans('menus.edit_role')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.user_management')); ?>
+
+        <small><?php echo e(trans('menus.edit_role')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-styles-end'); ?>
+    <?php echo HTML::style('css/backend/plugin/jstree/themes/default/style.min.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li><?php echo link_to_route('admin.access.users.index', trans('menus.user_management')); ?></li>
+    <li><?php echo link_to_route('admin.access.roles.index', trans('menus.role_management')); ?></li>
+    <li class="active"><?php echo link_to_route('admin.access.roles.edit', trans('strings.edit') . ' ' . $role->name, $role->id); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('backend.access.includes.partials.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo Form::model($role, ['route' => ['admin.access.roles.update', $role->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']); ?>
+
+
+        <div class="form-group">
+            <?php echo Form::label('name', trans('validation.attributes.role_name'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.role_name')]); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"><?php echo e(trans('validation.attributes.associated_permissions')); ?></label>
+            <div class="col-lg-10">
+                <?php if($role->id != 1): ?>
+                    <?php /* Administrator has to be set to all */ ?>
+                    <?php echo Form::select('associated-permissions', array('all' => 'All', 'custom' => 'Custom'), $role->all ? 'all' : 'custom', ['class' => 'form-control']);; ?>
+
+                <?php else: ?>
+                    <span class="label label-success">All</span>
+                <?php endif; ?>
+
+                <div id="available-permissions" class="hidden">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-info">
+                                <i class="fa fa-info-circle"></i> A permission marked with a <small><strong>(D)</strong></small> means that the permission has dependencies. They will be checked automatically when you select that permission. You can manage each permissions dependencies in the dependency tab of the edit permission screen.
+                            </div><!--alert-->
+                        </div><!--col-lg-12-->
+
+                        <div class="col-lg-6">
+                            <p><strong>Grouped Permissions</strong></p>
+
+                            <?php if($groups->count()): ?>
+                                <div id="permission-tree">
+                                    <ul>
+                                        <?php foreach($groups as $group): ?>
+                                            <li><?php echo $group->name; ?>
+
+                                                <?php if($group->permissions->count()): ?>
+                                                    <ul>
+                                                        <?php foreach($group->permissions as $permission): ?>
+                                                            <li id="<?php echo $permission->id; ?>" data-dependencies="<?php echo json_encode($permission->dependencies->lists('dependency_id')->all()); ?>">
+
+                                                                <?php if($permission->dependencies->count()): ?>
+                                                                    <?php
+                                                                    //Get the dependency list for the tooltip
+                                                                    $dependency_list = [];
+                                                                    foreach ($permission->dependencies as $dependency)
+                                                                        array_push($dependency_list, $dependency->permission->display_name);
+                                                                    $dependency_list = implode(", ", $dependency_list);
+                                                                    ?>
+                                                                    <a data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> <?php echo $dependency_list; ?>"><?php echo $permission->display_name; ?> <small><strong>(D)</strong></small></a>
+                                                                <?php else: ?>
+                                                                    <?php echo $permission->display_name; ?>
+
+                                                                <?php endif; ?>
+
+                                                            </li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+
+                                                <?php if($group->children->count()): ?>
+                                                    <ul>
+                                                        <?php foreach($group->children as $child): ?>
+                                                            <li><?php echo $child->name; ?>
+
+                                                                <?php if($child->permissions->count()): ?>
+                                                                    <ul> style="padding-left:40px;font-size:.8em">
+                                                                        <?php foreach($child->permissions as $permission): ?>
+                                                                            <li id="<?php echo $permission->id; ?>" data-dependencies="<?php echo json_encode($permission->dependencies->lists('dependency_id')->all()); ?>">
+
+                                                                                <?php if($permission->dependencies->count()): ?>
+                                                                                    <?php
+                                                                                    //Get the dependency list for the tooltip
+                                                                                    $dependency_list = [];
+                                                                                    foreach ($permission->dependencies as $dependency)
+                                                                                        array_push($dependency_list, $dependency->permission->display_name);
+                                                                                    $dependency_list = implode(", ", $dependency_list);
+                                                                                    ?>
+                                                                                    <a data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> <?php echo $dependency_list; ?>"><?php echo $permission->display_name; ?> <small><strong>(D)</strong></small></a>
+                                                                                <?php else: ?>
+                                                                                    <?php echo $permission->display_name; ?>
+
+                                                                                <?php endif; ?>
+
+                                                                            </li>
+                                                                        <?php endforeach; ?>
+                                                                    </ul>
+                                                                <?php endif; ?>
+                                                            </li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php else: ?>
+                                <p>There are no permission groups.</p>
+                            <?php endif; ?>
+                        </div><!--col-lg-6-->
+
+                        <div class="col-lg-6">
+                            <p><strong>Ungrouped Permissions</strong></p>
+
+                            <?php if($permissions->count()): ?>
+                                <?php foreach($permissions as $perm): ?>
+                                    <input type="checkbox" name="ungrouped[]" value="<?php echo $perm->id; ?>" id="perm_<?php echo $perm->id; ?>" <?php echo e(in_array($perm->id, $role_permissions) ? 'checked' : ""); ?> data-dependencies="<?php echo json_encode($perm->dependencies->lists('dependency_id')->all()); ?>" /> <label for="perm_<?php echo $perm->id; ?>">
+
+                                        <?php if($perm->dependencies->count()): ?>
+                                            <?php
+                                            //Get the dependency list for the tooltip
+                                            $dependency_list = [];
+                                            foreach ($perm->dependencies as $dependency)
+                                                array_push($dependency_list, $dependency->permission->display_name);
+                                            $dependency_list = implode(", ", $dependency_list);
+                                            ?>
+                                            <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> <?php echo $dependency_list; ?>"><?php echo $perm->display_name; ?> <small><strong>(D)</strong></small></a>
+                                        <?php else: ?>
+                                            <?php echo $perm->display_name; ?>
+
+                                        <?php endif; ?>
+
+                                    </label><br/>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p>There are no ungrouped permissions.</p>
+                            <?php endif; ?>
+                        </div><!--col-lg-6-->
+                    </div><!--row-->
+                </div><!--available permissions-->
+            </div><!--col-lg-3-->
+        </div><!--form control-->
+
+        <div class="form-group">
+            <?php echo Form::label('name', trans('validation.attributes.role_sort'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.role_sort')]); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="well">
+            <div class="pull-left">
+                <a href="<?php echo route('admin.access.roles.index'); ?>" class="btn btn-danger btn-xs"><?php echo e(trans('strings.cancel_button')); ?></a>
+            </div>
+
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success btn-xs" value="<?php echo e(trans('strings.save_button')); ?>" />
+            </div>
+            <div class="clearfix"></div>
+        </div><!--well-->
+
+        <?php echo Form::hidden('permissions'); ?>
+
+    <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+    <?php echo HTML::script('js/backend/plugin/jstree/jstree.min.js'); ?>
+
+    <?php echo HTML::script('js/backend/access/roles/script.js'); ?>
+
+
+    <script>
+        $(function() {
+            <?php foreach($role_permissions as $permission): ?>
+                tree.jstree('check_node', '#<?php echo $permission; ?>');
+            <?php endforeach; ?>
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

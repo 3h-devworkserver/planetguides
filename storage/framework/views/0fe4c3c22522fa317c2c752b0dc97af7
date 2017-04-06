@@ -1,0 +1,91 @@
+<?php $__env->startSection('title'); ?> Profile | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<section class="dashboard">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-3">
+					<h4><?php echo e($user->name); ?></h4>
+					<div class="profile-image">
+						
+						<?php echo Form::open(); ?>
+
+						 	
+		                  	 <!-- <div class="profile-avatar bg-image" style="background-image: url(<?php echo e($user->profilePic); ?>)"></div> -->
+		                  	 <img src="<?php echo e($user->profilePic); ?>" class="profile-avatar bg-image" />
+		                  	 
+		                  	 <div class="profileInput">
+		                  	 <span class="uploadButton"><i class="fa fa-camera"></i><span>Upload</span></span>
+		                        <input 
+		                            id="profilePic"
+							        name="profilePic"
+							        data-url="<?php echo e(route('frontend.traveller.profile.pic.upload')); ?>"
+							        
+		                            accept="image/*" 
+		                            type="file">
+		                          
+
+		                        <!-- Preview(s) will be displayed here -->
+		                      </div>  
+                    	<?php echo Form::close(); ?>
+
+
+					</div>
+					<div class="uploadProcess"></div>
+				</div>
+				<div class="col-md-9">
+				<?php echo $__env->make('includes.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<div class="profile-edit">
+						<h4>User Profile</h4>
+						<div class="row">
+							<div class="col-md-12 profile-form">
+								<?php echo form($form); ?>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+
+    <!-- Load required JS libraries. -->
+    <?php echo HTML::script('blueimp/load-image.all.min.js'); ?>
+
+    <?php echo HTML::script('blueimp/canvas-to-blob.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.iframe-transport.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-process.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-image.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-validate.js'); ?>
+
+
+    <?php echo HTML::script('js/customUpload.js'); ?>
+
+    <script language="javascript">
+    	print_country("country","<?php echo e($user->country); ?>");
+    	$("#state").append(new Option("<?php echo e($user->state); ?>", "<?php echo e($user->state); ?>"));
+    </script>
+
+  
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-styles-end'); ?>
+  <?php echo HTML::style('blueimp/css/jquery.fileupload.css'); ?>
+
+  <?php echo HTML::style('blueimp/css/jquery.fileupload-ui.css'); ?>
+
+  <?php echo HTML::script('js/countries.js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

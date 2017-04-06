@@ -1,0 +1,29 @@
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<!-- <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+-->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+ 		<?php echo HTML::script('js/jquery-ui.js'); ?>
+
+    <?php echo HTML::script('js/backend/jquery-ui.multidatespicker.js'); ?>
+
+    <?php echo HTML::script('js/jquery.autocomplete.js'); ?>
+
+          <?php echo HTML::script('js/backend/chosen.jquery.min.js'); ?>
+
+ 		<?php echo HTML::script('js/jquery.validate.js'); ?>
+
+ 		<?php echo HTML::script('js/bootstrap.min.js'); ?>
+
+        <?php echo HTML::script('js/owl.carousel.min.js'); ?>
+
+        <!-- <?php echo HTML::script('js/owl.carousel.js'); ?> -->
+        <?php echo HTML::script('fancybox/jquery.fancybox.js?v=2.1.5'); ?>
+
+		<?php echo HTML::script('js/jquery.sumoselect.min.js'); ?>
+
+        <?php echo HTML::script('js/custom.js'); ?>
+
+        <?php echo HTML::script('js/jquery.slides.min.js'); ?>
+

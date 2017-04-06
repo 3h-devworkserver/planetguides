@@ -1,0 +1,865 @@
+/* #Media Queries
+================================================== */
+
+
+
+/* Smaller than standard 960 (devices and browsers) */
+
+@media only screen and (max-width:1060px) {}
+
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width:768px) and (max-width:960px){
+    .thumb-wrap {
+        margin-bottom: 15px;
+    }
+    .section-title {
+        margin-bottom: 10px;
+    }
+    .book-it {
+        margin-top: 0;
+        width: 300px;
+    }
+    /* profile-edit */
+    .bannerArea{
+        bottom:inherit;
+        top:23%;
+        right:37px;
+    }
+
+    /* POPUP MODALS */
+    .modal-header, .modal-footer{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    #login-popup .user-login,
+    #login-popup .user-option,
+    #recoveryModal .modal-body,
+    .new-registration,
+    .fb-login{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .fb-logo{
+        width: 100%;
+        -webkit-background-size: 100% auto;
+        background-size: 100% auto;
+    }
+    #host-popup .modal-body .btn.btn-primary.btn-facebook{
+        width: 100%;
+    }
+    #host-popup .modal-body .btn.btn-primary.btn-facebook i{
+        margin: 0 14px 0 0;
+        padding: 10px;
+    }
+    .editProfile .guide-detail form .field,
+    .editProfile .guide-detail form .edit-field{
+        width: 64%;
+    }
+    .option-btns{
+        width: 30%;
+    }
+    #AboutForm {
+        position: relative;
+    }
+    #AboutForm .option-btns{
+        position: absolute;
+        top: 40px;
+        right: 10px;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px) {
+    h2 {
+        font-size: 24px;
+    }
+    .search-wrap {
+        margin-top: 40px;
+    }
+    .search-wrap .SumoSelect > .CaptionCont,
+    .search-wrap .input-type input[type="text"],
+    .search-wrap .submit-wrap .btn {
+        border-radius: 4px;
+    }
+    .select-type,
+    .input-type {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        float: left;
+        padding: 2px;
+        width: 33%;
+    }
+    .submit-wrap {
+        float: left;
+        padding: 2px;
+        width: 33%;
+    }
+
+    footer .nav li {
+        margin-right: 10px;
+    }
+    .search-result .banner {
+        height: 220px;
+    }
+    /* guide-profile */
+    .res-half-grid{
+        font-size: 13px;
+    }
+    .book-it-form .form-group {
+        padding-right: 0px;
+        width: 100%;
+    }
+    .guide-detail {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .thumb-wrap{
+        margin-bottom: 15px;   
+    }
+    .thumb-wrap a.fancybox{
+        height: 140px;
+    }
+ 
+    /* edit profile */
+        .editProfile .guide-detail form .field,
+    .editProfile .guide-detail form .edit-field{
+        width: 64%;
+    }
+    .option-btns{
+        width: 32%;
+    }
+    .editProfile .guide-detail {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .no-pad {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .guide-detail ul li span {
+        width: 30%;
+    }
+    .editProfile .guide-detail form {
+        width: 70%;
+    }
+    .editProfile .profile-image,
+    .profile-avatar {
+        height: 180px;
+    }
+    .editProfile .profile-image .profileInput .uploadButton {
+        width: 60%;
+    }
+    .editProfile .about-me form#AboutForm .field,
+    .editProfile .about-me form#AboutForm .edit-field {
+        width: 100%;
+        margin-right: 0;
+    }
+    #AboutForm .option-btns{
+        width: 23%;
+        position: absolute;
+        top: -35px;
+        right: 0;
+    }
+/*     .editProfile .thumb-wrap {
+    margin: 10px 10px 10px 0;
+} */
+    .guide-profile a.ui-state-default, 
+    .guide-profile span.ui-state-default,
+    .guide-profile a.ui-state-default.ui-state-hover, 
+    .guide-profile a.ui-state-default.ui-state-active,
+    .guide-profile a.ui-state-default.ui-state-highlight,
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-highlight, 
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-hover, 
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-active, 
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-highlight,
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-highlight, 
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-hover, 
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-active, 
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-highlight{
+        width: auto;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px) and (orientation:landscape) {
+    .bannerArea{
+        right: 53px;
+    }
+
+    .search-wrap {
+        margin-top: 120px;
+    }
+    .search-wrap .SumoSelect > .CaptionCont,
+    .search-wrap .input-type input[type="text"],
+    .submit-wrap .btn {
+        border-radius: inherit;
+    }
+    .search-wrap .select-type,
+    .search-wrap .input-type {
+        padding: 0;
+        width: 15%;
+    }
+    .search-wrap .input-type {
+        width: 17%;
+    }
+    .search-wrap .submit-wrap {
+        padding: 0;
+        width: 8%;
+    }
+    .search-wrap .submit-wrap .btn {
+        border-radius: 0 4px 4px 0;
+    }
+
+    .guides .thumbnail a.guide-image {
+        height: 200px;
+    }
+
+    /* guide-profile */
+    .res-half-grid .col-md-4{
+        width: 60%;
+    }
+    .res-half-grid .guide-detail{
+        width: 100%;
+    }
+    .book-it-form .form-group {
+        padding-right: 5px;
+        width: 50%;
+    }
+    .editProfile .about-me form#AboutForm .field,
+     .editProfile .about-me form#AboutForm .edit-field{
+        width: 77%;
+     }
+     #AboutForm .option-btns{
+        position: static;
+     }
+}
+
+
+/* All Mobile Sizes (devices and browser) */
+
+@media only screen and (max-width:767px) {
+    /* User Dashboard
+    --------------------------*/
+    .dashboard .top-right-separator{
+        border-width: 0 0 30px 35vw;
+    }
+    .dashboard .top-left-separator{
+        border-width: 30px 0 0 35vw;
+    }
+.navbar-header .language-select {
+  margin-right: 9px;
+  margin-top: 22px;
+}
+
+
+    .dashboard #myTab-accordion .panel-title a{
+        font-weight: normal;
+        color: #F56A95;
+        font-size: 16px;
+    }
+    .dashboard #myTab-accordion .panel-title a.collapsed{
+        color: inherit;
+    }
+    .dashboard .post{
+        padding:0;
+        margin-bottom: 30px;
+    }
+    .dashboard .post .img-block{
+        height: 220px;
+        margin-bottom: 20px;
+    }
+    .dashboard .post .name{
+        width: 72%;
+    }
+    .dashboard .post .review-rating{
+        width: 28%;
+        text-align: right;
+    }
+        
+    .guide-name .name h3{
+        font-size: 20px;
+    }
+    .res-half-grid{
+        font-size: 13px;
+    }
+    .guide-profile a.ui-state-default, 
+    .guide-profile span.ui-state-default,
+    .guide-profile a.ui-state-default.ui-state-hover, 
+    .guide-profile a.ui-state-default.ui-state-active,
+    .guide-profile a.ui-state-default.ui-state-highlight,
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-highlight, 
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-hover, 
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-active, 
+    .ui-datepicker-calendar td:last-child a.ui-state-default.ui-state-highlight,
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-highlight, 
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-hover, 
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-active, 
+    .ui-datepicker-calendar td:first-child a.ui-state-default.ui-state-highlight{
+        width: auto;
+    }
+    .search-wrap {
+        margin-top: -140px;
+    }
+    .select-type.type .SumoSelect > .optWrapper.multiple > .options > li {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+    .SumoSelect > .optWrapper.isFloating {
+        position: absolute;
+        width: 100%;
+        min-height: 100px;
+        max-height: 100%;
+    }
+    .SumoSelect > .optWrapper {
+        background: rgba(255, 255, 255, 1) none repeat scroll 0 0;
+    }
+    .type .SumoSelect > .optWrapper.open {
+        width: 100%;
+    }
+    .SumoSelect > .optWrapper > .MultiControls {
+        display: none !important;
+    }
+    .SumoSelect > .optWrapper.multiple.isFloating {
+        padding-bottom: 0 !important;
+    }
+    .select-type .availability.open .dropdown-menu{
+        left: inherit;
+        right: 0;
+    }
+    .SumoSelect > .optWrapper.isFloating{
+        top:65px;
+    }
+    .select-type .optWrapper.open{
+        top: 95px;
+    }
+    .availability .dropdown-menu{
+        background:rgba(255,255,255,1);
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .page-header {
+        overflow: hidden;
+    }
+    /* header */
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #e20a16;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: #e20a16;
+        z-index: 2;
+    }
+    .navbar.navbar-default {
+        min-height: 80px;
+        background: #fff;
+    }
+
+    .navbar-toggle {
+        padding: 7px;
+        margin-top: 26px;
+        margin-left: 15px;
+        margin-right: 0;
+        float: left;
+    }
+    .navbar-toggle .icon-bar {
+        width: 20px;
+    }
+    .navbar-collapse {
+        /*  background: rgba(0, 0, 0, 1);
+        margin-top: 15px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border:medium none;*/
+    }
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: medium none;
+    }
+    .language-select {
+        float: right;
+        margin-left: 0;
+        margin-right: 50px;
+        margin-top: -40px;
+    }
+    .navbar-right .language-select {
+        float: none;
+        margin: 0;
+    }
+    .navbar-nav {
+        margin: 7.5px -15px;
+    }
+    .nav.navbar-nav {
+        padding-top: 0;
+    }
+    .navbar-right .language-select .dropdown-menu {
+        background: #fff;
+    }
+    .navbar-header + .language-select {
+        display: none;
+    }
+    .navbar-header{
+        min-height: 80px;
+    }
+    .navbar-collapse{
+        background:#000;
+    }
+    .navbar-collapse li{
+        padding:0 15px;
+    }
+
+    /* Mobile Menu
+    -------------------*/
+    .navbar-toggle {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        cursor: pointer;
+        float: right;
+        margin: 25px 10px 0;
+        padding:0;
+        position: relative;
+        width: 25px;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #e20a16;
+        display: block;
+        height: 3px;
+        margin: 5px 0 0;
+        width: 100%;
+    }
+    .navbar-default .navbar-toggle:hover, 
+    .navbar-default .navbar-toggle:focus {
+        background-color: transparent;
+    }
+
+#dropdownMenu2 .btn {
+  border-radius: 0;
+  border-right: 1px dashed;
+  color: #e20a16;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 20px;
+}
+    .language-select .form-group .dropdown .dropdown-menu{
+        width: 100%;
+    }
+
+    /* .navbar-default .navbar-nav > .active > a, 
+    .navbar-default .navbar-nav > .active > a:hover, 
+    .navbar-default .navbar-nav > li > a:hover, 
+    .navbar-default .navbar-nav > li > a:focus {
+      background: #767676;
+      border-left: 2px solid;
+    }
+    #slide-nav .container {
+        margin: 0!important;
+        padding: 0!important;
+        height: 100%;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #slide-nav .navbar-header {
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    #slide-nav .navbar.slide-active {
+        position: absolute;
+        width: 80%;
+        top: -1px;
+        z-index: 1000;
+    }
+    #slide-nav #slidemenu {
+        background: #666;
+        left: -100%;
+        width: 80%;
+        min-width: 0;
+        position: absolute;
+        padding-left: 0;
+        z-index: 2;
+        top: 0;
+        margin: 0;
+    }
+    #slide-nav #slidemenu .navbar-nav {
+        min-width: 0;
+        width: 100%;
+        margin: 0;
+    }
+    #slide-nav #slidemenu .navbar-nav .dropdown-menu li a {
+        min-width: 0;
+        width: 80%;
+        white-space: normal;
+    }
+    #slide-nav {
+        border-top: 0
+    }
+    #slide-nav.navbar-inverse #slidemenu {
+        background: #333
+    } */
+    /* this is behind the navigation but the navigation is not inside it so that the navigation is accessible and scrolls*/
+    /* #navbar-height-col {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        bottom: 0;
+        width: 80%;
+        left: -80%;
+        background: #666;
+    }
+    #navbar-height-col.inverse {
+        background: #333;
+        z-index: 1;
+        border: 0;
+    } */
+ 
+
+   
+    /* banner */
+    .banner,
+    .home section.banner .item,
+    .home.mobile-menu section.banner .item,
+    section.banner .item {
+        height: 440px;
+    }
+    .carousel-indicators {
+        bottom: 0;
+    }
+    /* Search Section */
+    .search-wrap h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        margin-top: 50px;
+    }
+    .search-wrap [class*="col-"],
+    .search-wrap [class^="col-"] {
+        padding: 0;
+    }
+    .select-type,
+    .input-type {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 2px;
+        width: 50%;
+    }
+    .submit-wrap{
+        float: none;
+        width: 100%;
+        clear: both;
+        padding: 2px;
+    }
+
+    .search-wrap .select-type .SumoSelect > .CaptionCont,
+    .select-type input,
+    .input-type input,
+    .search-wrap .submit-wrap .btn,
+    .search-wrap input[type="text"],
+    .select-type .availability > button.btn {
+        border-radius: 4px;
+    }
+    /* search result page */
+    .search-result .banner {
+        height: 300px;
+    }
+    .search-result .search-wrap {
+        margin: 30px auto 0;
+    }
+    .search-result .search-wrap .SumoSelect > .CaptionCont,
+    .search-result .input-type input[type="text"] {
+        border-color: #cdcdcd;
+        border-style: solid;
+        border-width: 1px;
+    }
+    .input-type input#datefilter {
+        border: 1px solid #cdcdcd !important;
+    }
+
+    /* Footer 
+    -------------------*/
+    
+    footer .nav,
+    footer .logo-quote {
+        margin-bottom: 30px;
+    }
+    
+    footer .nav ul {
+        text-align: center;
+    }
+    
+    footer .nav ul li {
+        float: none;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    
+    footer .nav ul li a {
+        font-size: 13px;
+        padding: 8px 13px;
+        display: block;
+    }
+    
+    footer .text-right {
+        text-align: center;
+    }
+    
+    footer .text-right h4 {
+        margin-bottom: 10px;
+    }
+    
+    footer .social-links {
+        margin-bottom: 30px;
+    }
+    
+    footer .links {
+        margin-top: 0;
+    }
+
+
+    /* Guide Profile 
+    -----------------------*/
+    .thumb-wrap{
+        margin-bottom: 15px;
+    }
+    .section-title{
+        margin-bottom: 10px;
+    }
+    .guide-detail {
+        padding: 10px 15px;
+    }
+    .ui-datepicker-calendar td.ui-datepicker-week-end{
+        width: auto;
+    }
+
+    .book-it {
+        margin-top: 15px;
+    }
+    /* edit profile */
+    .bannerArea{
+        top: 23%;
+        right:15px; 
+    }
+    .editProfile .guide-detail {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .editProfile .guide-detail form .field,
+    .editProfile .guide-detail form .edit-field {
+        width: 100%;
+    }
+    .editProfile .about-me form#AboutForm .field,
+    .editProfile .about-me form#AboutForm .edit-field {
+        width: 100%;
+        margin-right: 0;
+    }
+    .editProfile .thumb-wrap {
+        /*
+        width: 45%;
+        height: 120px;
+        margin-top: 10px;
+        margin-bottom: 10px; 
+        */
+    }
+    .calender #booking .ui-datepicker{
+        width: 100%;
+    }
+    .book-it-content .btn{
+        width: 100% !important;
+    }
+
+    .guide-profile .fancybox {
+        width: 100%;
+        height: 180px;
+    }
+    .guide-profile .profile-img > .fancybox{
+        height: 300px;
+    }
+    /*
+    .certificate-img .thumb-wrap:last-child {
+        margin-right: 0 !important;
+    }
+    */
+    .bannerArea {
+        bottom: inherit;
+        right: 10px;
+        top: 25%;
+    }
+    .editProfile .field {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 0 10px;
+    }
+    .editProfile .guide-detail ul li{
+        min-height: 62px;
+    }
+    .editProfile .guide-detail form .field,
+    .editProfile .guide-detail form .edit-field {
+        width: 100%;
+    }
+/*     .editProfile .guide-detail form .edit-icon,
+.about-me .edit-icon {
+    top: 0;
+    bottom: 0;
+    bottom: -30px;
+    position: absolute;
+    right: 0;
+    width: 10%;
+} */
+    .guide-detail ul li {
+        position: relative;
+    }
+    .guide-detail ul li span {
+        display: block;
+        float: none;
+        width: 100%;
+    }
+    .guide-detail ul li span.radio {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .editProfile .guide-detail form {
+        float: none;
+        width: 100%;
+    }
+    .option-btns {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+    .editProfile .edit-field {
+        margin-bottom: 10px;
+        margin-right: 0 !important;
+    }
+    .editProfile .about-me form {
+        position: relative;
+    }
+    #AboutForm .option-btns{
+        width: auto;
+        top: -30px;
+        right: 15px;
+    }
+    /* guide setting page */
+    .guide-settings .setting-page,
+    .guide-settings .setting-page .btn-danger{
+        width: 100%;
+    }
+    .guide-settings .setting-page .btn-danger{
+        margin-top: 15px;
+    }
+
+    /* -- Payment Process Page --*/
+    .booked-detail{
+        margin-top: 15px;
+    }
+
+    /*-- Pop up Modal --*/
+    .modal-header, .modal-footer{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .new-registration,
+    .modal-body,
+    #login-popup .user-login,
+    #login-popup .user-option{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #recoveryModal .modal-body .form-control,
+    #recoveryModal .modal-body input[type="submit"]{
+        width: 100%;
+        border-radius: 3px;
+    }
+    #recoveryModal .modal-body input[type="submit"]{
+        margin-top: 10px;
+    }
+    #host-popup .modal-body, #travel-popup .modal-body{
+        overflow: scroll;
+    }
+    #signup-modal .modal-body{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #signup-modal .signup-option{
+        width: 100%;
+    }
+    .modal-body .badge{
+        top: -20px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    .fb-login{
+        margin-top: 20px;
+        padding-top: 60px;
+        padding-bottom: 20px;
+    }
+    #login-popup .user-login{
+        border-left: none;
+        margin-top: 15px;
+    }
+
+    .list-review-form .stars{
+        float: none;
+        text-align: center,
+        margin-bottom: 10px;
+    }
+    .list-review-form .text-right{
+        text-align: center;
+    }
+
+}
+
+@media (min-width:768px) {
+    #page-content {
+        left: 0!important
+    }
+    .navbar.navbar-fixed-top.slide-active {
+        position: fixed
+    }
+    .navbar-header {
+        left: 0!important
+    }
+}
+
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+
+@media only screen and (min-width:480px) and (max-width:767px) {
+
+    /* guide-profile page */
+    .certificate-img .col-md-4,
+    .video-gallery .col-md-4,
+    .img-gallery .col-md-4{
+        width: 50%;
+        float: left;
+    }
+
+    .guides .col-md-3{
+        float: left;
+        width: 50%;
+    }
+
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) and (orientation: landscape) {
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 640px) {
+    .res-half-grid > [class*="col-"],
+    .res-half-grid > [class^="col-"]{
+        width: 49%;
+        float: left;
+    }
+}
+
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+
+@media only screen and (max-width:479px) {}

@@ -1,0 +1,78 @@
+<?php
+use App\Models\Profile;
+use App\Models\Guide;
+?>
+
+<?php $__env->startSection('title'); ?> Search Results | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('banner'); ?>
+	<section class="banner">
+	<div class="search-wrap">
+      	<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <?php echo $__env->make('frontend.includes.searchbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+         		</div>
+        	</div>
+      	</div>
+    </div>
+    </section>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h2 class="text-center">
+					<?php if($count == 1): ?>
+						<?php echo e($count); ?> Guide
+					<?php else: ?>
+						<?php echo e($count); ?> Guides
+					<?php endif; ?>
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="guides">
+		<div class="row">
+		<?php if(!$guides): ?>
+			<h1 style="text-align: center;color:#E74C3C;">Sorry, no results found.</h1>
+		<?php endif; ?>
+		<?php foreach($guides as $guide): ?>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<a href="<?php echo e(URL::to('guide/'.$guide->username)); ?>">
+					<?php if(!empty(Profile::where('user_id', $guide->id)->first()->profileImg)): ?>
+						<div style="background-image:url(<?php echo e(asset(Profile::where('user_id', $guide->id)->first()->profileImg)); ?>)"></div>
+					<?php elseif(!empty(Profile::where('user_id', $guide->id)->first()->avatar)): ?>
+						<div style="background-image:url(<?php echo e(asset(Profile::where('user_id', $guide->id)->first()->avatar)); ?>)"></div>
+					<?php else: ?>
+						<div style="background-image:url(<?php echo e(asset('/images/avatar.png')); ?>)"></div>
+					<?php endif; ?>
+					</a>
+					<div class="caption">
+						<h3><a><?php echo e($guide->fname); ?> <?php echo e($guide->lname); ?></a></h3>
+						<div class="experience pull-left">
+						Experience : Since <?php foreach($profiles as $p){ if($p->user_id == $guide->id){ echo $p->experience;}} ?>
+
+							<!-- Experience : <?php// $time = Carbon\Carbon::now()->format('Y'); 
+											//$time = Carbon\Carbon::parse($time);
+						 	//foreach($profiles as $p){ if($p->user_id == $guide->id){ $dbdate = Carbon\Carbon::parse($p->//experience);
+							//echo $dbdate->diffInYears($time);}} ?> Years -->
+						</div>
+						<div class="rating pull-right">
+							Rating : <?php echo e(Guide::where('user_id', $guide->id)->first()->rating_cache); ?> of 5.0
+						</div>
+					</div>
+				</div>
+			</div>
+<?php endforeach; ?>
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

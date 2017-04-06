@@ -1,0 +1,192 @@
+<?php $__env->startSection('title', trans('menus.user_management') . ' | ' . trans('menus.create_user')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.user_management')); ?>
+
+        <small><?php echo e(trans('menus.create_user')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li><?php echo link_to_route('admin.access.users.index', trans('menus.user_management')); ?></li>
+    <li class="active"><?php echo link_to_route('admin.access.users.create', trans('menus.create_user')); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('backend.access.includes.partials.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo Form::open(['route' => 'admin.access.users.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']); ?>
+
+
+        <div class="form-group">
+            <?php echo Form::label('fname', trans('validation.attributes.fname'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::text('fname', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.fname')]); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <?php echo Form::label('lname', trans('validation.attributes.lname'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::text('lname', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.lname')]); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <?php echo Form::label('email', trans('validation.attributes.email'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email')]); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <?php echo Form::label('password', trans('validation.attributes.password'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::password('password', ['class' => 'form-control']); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <?php echo Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), ['class' => 'col-lg-2 control-label']); ?>
+
+            <div class="col-lg-10">
+                <?php echo Form::password('password_confirmation', ['class' => 'form-control']); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"><?php echo e(trans('validation.attributes.active')); ?></label>
+            <div class="col-lg-1">
+                <input type="checkbox" value="1" name="status" checked="checked" />
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"><?php echo e(trans('validation.attributes.confirmed')); ?></label>
+            <div class="col-lg-1">
+                <input type="checkbox" value="1" name="confirmed" checked="checked" />
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"><?php echo e(trans('validation.attributes.send_confirmation_email')); ?><br/>
+                <small><?php echo e(trans('strings.if_confirmed_is_off')); ?></small>
+            </label>
+            <div class="col-lg-1">
+                <input type="checkbox" value="1" name="confirmation_email" />
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"><?php echo e(trans('validation.attributes.associated_roles')); ?></label>
+            <div class="col-lg-3">
+                <?php if(count($roles) > 0): ?>
+                    <!-- <input type="radio" value="3" name="assignees_roles" id="3" checked /> <label for="role-3">Guide</label> <a href="#" data-role="role_3" class="show-permissions small">(<span class="show-hide">Show</span> Permissions)</a><br/> -->
+                    <?php foreach($roles as $role): ?>
+                        <input type="radio" value="<?php echo e($role->id); ?>" name="assignees_roles" id="role-<?php echo e($role->id); ?>" checked /> <label for="role-<?php echo e($role->id); ?>"><?php echo $role->name; ?></label> <a href="#" data-role="role_<?php echo e($role->id); ?>" class="show-permissions small">(<span class="show-hide">Show</span> Permissions)</a><br/>
+
+                        <div class="permission-list hidden" data-role="role_<?php echo e($role->id); ?>">
+                            <?php if($role->all): ?>
+                                All Permissions<br/><br/>
+                            <?php else: ?>
+                                <?php if(count($role->permissions) > 0): ?>
+                                    <blockquote class="small"><?php /*
+                                        */ ?><?php foreach($role->permissions as $perm): ?><?php /*
+                                            */ ?><?php echo e($perm->display_name); ?><br/>
+                                        <?php endforeach; ?>
+                                    </blockquote>
+                                <?php else: ?>
+                                    No Permissions<br/><br/>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div><!--permission list-->
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    No Roles to set
+                <?php endif; ?>
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label"><?php echo e(trans('validation.attributes.other_permissions')); ?></label>
+            <div class="col-lg-10">
+                <div class="alert alert-info">
+                    <i class="fa fa-info-circle"></i> Checking a permission will also check its dependencies, if any.
+                </div><!--alert-->
+
+                <?php if(count($permissions)): ?>
+                    <?php foreach(array_chunk($permissions->toArray(), 10) as $perm): ?>
+                        <div class="col-lg-3">
+                            <ul style="margin:0;padding:0;list-style:none;">
+                                <?php foreach($perm as $p): ?>
+
+                                    <?php
+                                        //Since we are using array format to nicely display the permissions in rows
+                                        //we will just manually create an array of dependencies since we do not have
+                                        //access to the relationship to use the lists() function of eloquent
+                                        //but the relationships are eager loaded in array format now
+                                        $dependencies = [];
+                                        $dependency_list = [];
+                                        if (count($p['dependencies'])) {
+                                            foreach ($p['dependencies'] as $dependency) {
+                                                array_push($dependencies, $dependency['dependency_id']);
+                                                array_push($dependency_list, $dependency['permission']['display_name']);
+                                            }
+                                        }
+                                        $dependencies = json_encode($dependencies);
+                                        $dependency_list = implode(", ", $dependency_list);
+                                    ?>
+
+                                    <li><input type="checkbox" value="<?php echo e($p['id']); ?>" name="permission_user[]" data-dependencies="<?php echo $dependencies; ?>" id="permission-<?php echo e($p['id']); ?>"> <label for="permission-<?php echo e($p['id']); ?>" />
+
+                                        <?php if($p['dependencies']): ?>
+                                            <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> <?php echo $dependency_list; ?>"><?php echo $p['display_name']; ?> <small><strong>(D)</strong></small></a>
+                                        <?php else: ?>
+                                            <?php echo $p['display_name']; ?>
+
+                                        <?php endif; ?>
+
+                                    </label></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    No Other Permissions
+                <?php endif; ?>
+            </div><!--col 3-->
+        </div><!--form control-->
+
+        <div class="well">
+            <div class="pull-left">
+                <a href="<?php echo e(route('admin.access.users.index')); ?>" class="btn btn-danger btn-xs"><?php echo e(trans('strings.cancel_button')); ?></a>
+            </div>
+
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success btn-xs" value="<?php echo e(trans('strings.save_button')); ?>" />
+            </div>
+            <div class="clearfix"></div>
+        </div><!--well-->
+
+    <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+    <?php echo HTML::script('js/backend/access/permissions/script.js'); ?>
+
+    <?php echo HTML::script('js/backend/access/users/script.js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

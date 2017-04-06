@@ -1,0 +1,70 @@
+<?php $__env->startSection('title'); ?> Settings | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+
+<section class="dashboard">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-9">
+				<?php echo $__env->make('includes.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+					<div class="profile-edit">
+						<h4>User Settings</h4>
+						<div class="row">
+							<div class="col-md-12">
+							<?php echo Form::model($user, ['route' => 'frontend.traveller.settings.emailupdate']); ?>
+
+								   <div class="form-group col-md-6">
+								    <?php echo Form::label('email', 'Email Address', ['class' => 'control-label']); ?>
+
+								   	<?php echo Form::email('email', $user->email, ['class' => 'form-control']); ?>
+
+								   </div>
+								   <div class="form-group  col-md-6">
+								    <?php echo Form::submit('Save', ['class' => 'btn btn-primary']); ?>
+
+								   </div>
+							<?php echo Form::close(); ?>
+
+							
+							</div>
+							<div class="col-md-6"> 
+								<?php echo Form::open(['route' => 'frontend.traveller.settings.update', 'id' => 'travellerSettings']); ?>
+
+								   
+								   <div class="form-group">
+								   <?php echo Form::label('old_password', 'Old Password', ['class' => 'control-label']); ?>
+
+								  	 <?php echo Form::password('old_password', ['class' => 'form-control']); ?>
+
+								   </div>
+								   <div class="form-group">
+								   <?php echo Form::label('password', 'New Password', ['class' => 'control-label']); ?>
+
+								   	<?php echo Form::password('password', ['class' => 'form-control']); ?>
+
+								   </div>
+								   <div class="form-group">
+								   <?php echo Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']); ?>
+
+								   	<?php echo Form::password('password_confirmation', ['class' => 'form-control']); ?>
+
+								   </div>
+								   <div class="form-group">
+								   	<?php echo Form::submit('Save', ['class' => 'btn btn-primary']); ?>
+
+								   </div>
+								<?php echo Form::close(); ?>
+
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

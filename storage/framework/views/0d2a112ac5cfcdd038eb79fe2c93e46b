@@ -1,0 +1,1 @@
+Hello <?php echo e($fullname); ?>,<br /> <br /> Thank you for registering at <a href="http://guidenp.devworkserver.com" target="_blank">guidenp.devworkserver.com</a>. We are delighted to inform you that your account has been successful activated!

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>             
+        <h3>Hello </h3>
+        <h4><?php echo e($user->fname); ?> <?php echo e($user->lname); ?></h4><br/>
+
+        <div>
+            As you requested, we have sent you a password reset link to change your password.<br/>
+			Please click below link and change your password.<br/>
+		</div><br/>
+		<!--<div><?php echo e(trans('strings.click_here_to_reset')); ?></div> -->
+		<div> <?php echo e(url('password/reset/' . $token)); ?></div>
+		<br/><br/><br/>
+        <div>
+        <div>Regards</div><br/>
+        <div>
+        	<a  href="http://guidenp.com">
+			<img src="http://guidenp.com/images/logo.png" style="width: 72px;">
+			</a>
+        </div>
+		<div>GUIDENP Team</div>
+		<div>
+		<a href="mailto:info@guidenp.com">info@guidenp.com</a><br/>
+		<a href="www.guidenp.com">www.guidenp.com</a>
+		</div>
+        </div>
+
+    </body>
+</html>

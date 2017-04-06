@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="<?php echo e(csrf_token()); ?>" />
+    <title><?php echo $__env->yieldContent('title'); ?></title>
+    <meta name="description" content="<?php echo $__env->yieldContent('meta_description', 'Default Description'); ?>">
+    <meta name="author" content="<?php echo $__env->yieldContent('author', 'GuideNp'); ?>">
+    <?php echo $__env->yieldContent('meta'); ?>
+    <?php echo $__env->yieldContent('before-styles-end'); ?>
+    <?php echo $__env->make('frontend.includes.styles', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->yieldContent('after-styles-end'); ?>
+    
+    <?php echo HTML::script('js/jquery-1.11.2.min.js'); ?>
+
+    <?php echo HTML::script('js/backend/jquery.dataTables.min.js'); ?>
+
+    <script>
+        var base_url = '<?php echo e(URL::to("")); ?>';
+        var full_current_url = '<?php echo e(URL::full()); ?>';
+        var current_url = '<?php echo e(URL::current()); ?>';
+    </script>
+
+</head>
+<body class="<?php echo e($class); ?>">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <?php echo $__env->make('frontend.includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    
+    
+    <div class="main-container">
+                      
+            <?php echo $__env->yieldContent('content'); ?>
+        
+    </div><!--end main-container-->
+
+<?php echo $__env->make('frontend.includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('frontend.includes.popup', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->yieldContent('before-scripts-end'); ?>
+<?php echo $__env->make('frontend.includes.script', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->yieldContent('after-scripts-end'); ?>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?php $__env->startSection('title', trans('menus.role_management')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.user_management')); ?>
+
+        <small><?php echo e(trans('menus.role_management')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li><?php echo link_to_route('admin.access.users.index', trans('menus.user_management')); ?></li>
+    <li class="active"><?php echo link_to_route('admin.access.roles.index', trans('menus.role_management')); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('backend.access.includes.partials.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th><?php echo e(trans('crud.roles.role')); ?></th>
+            <th><?php echo e(trans('crud.roles.permissions')); ?></th>
+            <th><?php echo e(trans('crud.roles.number_of_users')); ?></th>
+            <th><?php echo e(trans('crud.roles.sort')); ?></th>
+            <th><?php echo e(trans('crud.actions')); ?></th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach($roles as $role): ?>
+                <tr>
+                    <td><?php echo $role->name; ?></td>
+                    <td>
+                        <?php if($role->all): ?>
+                            <span class="label label-success">All</span>
+                        <?php else: ?>
+                            <?php if(count($role->permissions) > 0): ?>
+                                <div style="font-size:.7em">
+                                    <?php foreach($role->permissions as $permission): ?>
+                                        <?php echo $permission->display_name; ?><br/>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <span class="label label-danger">None</span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                    <td><?php echo $role->users()->count(); ?></td>
+                    <td><?php echo $role->sort; ?></td>
+                    <td><?php echo $role->action_buttons; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <div class="pull-left">
+        <?php echo e($roles->total()); ?> <?php echo e(trans('crud.roles.total')); ?>
+
+    </div>
+
+    <div class="pull-right">
+        <?php echo e($roles->render()); ?>
+
+    </div>
+
+    <div class="clearfix"></div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

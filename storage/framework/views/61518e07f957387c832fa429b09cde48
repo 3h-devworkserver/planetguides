@@ -1,0 +1,232 @@
+          <!-- Left side column. contains the logo and sidebar -->
+          <aside class="main-sidebar">
+
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+              <!-- Sidebar user panel (optional) -->
+              <div class="user-panel">
+                <div class="pull-left image">
+                  <img src="<?php echo access()->user()->picture; ?>" class="img-circle" alt="User Image" />
+                </div>
+                <div class="pull-left info">
+                  <p><?php echo e(access()->user()->name); ?></p>
+                  <!-- Status -->
+                  <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+              </div>
+
+              
+
+              <!-- Sidebar Menu -->
+              <ul class="sidebar-menu">
+                <li class="header"><?php echo e(trans('menus.main_navigation')); ?></li>
+                <?php if (access()->can('view-page-management')): ?>
+                <li class="<?php echo e(Active::pattern('admin/pages*')); ?> treeview">
+                  <a href="#">
+                    <i class="fa fa-files-o"></i><span><?php echo e(trans('menus.pages.pages')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/pages*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/pages*', 'display: block;')); ?>">
+                    <li class="<?php echo e(Active::pattern('admin/pages/create')); ?>">
+                      <a href="<?php echo url('admin/pages/create'); ?>"><i class="fa fa-plus"></i> <?php echo e(trans('menus.pages.new')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/pages ')); ?>">
+                      <a href="<?php echo url('admin/pages'); ?>"><i class="fa fa-file-text-o"></i> <?php echo e(trans('menus.pages.all')); ?></a>
+                    </li>
+                  </ul>
+                </li>
+                <?php endif; ?>
+
+
+                <?php if (access()->can('view-access-management')): ?>
+                   <li class="<?php echo e(Active::pattern('admin/access/users/*')); ?> treeview">
+                      <a href="#">
+                        <i class="fa fa-users"></i><span><?php echo e(trans('menus.user_management')); ?></span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu <?php echo e(Active::pattern('admin/access/users/*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/access/users/*', 'display: block;')); ?>">
+                        <li class="<?php echo e(Active::pattern('admin/access/users/guide')); ?>">
+                          <a href="<?php echo url('admin/access/users/guide'); ?>"><i class="fa fa-user"></i> <?php echo e(trans('menus.guide_management')); ?></a>
+                        </li>
+                        <li class="<?php echo e(Active::pattern('admin/access/users/traveller')); ?>">
+                          <a href="<?php echo url('admin/access/users/traveller'); ?>"><i class="fa fa-user"></i> <?php echo e(trans('menus.traveller_management')); ?></a>
+                        </li>
+                      </ul>
+                  </li>
+                 
+                <?php endif; ?>
+
+
+                <?php if (access()->can('view-reviews-management')): ?>
+                   <li class="<?php echo e(Active::pattern('admin/reviews/*')); ?> treeview">
+                      <a href="#">
+                        <i class="fa fa-comments-o"></i><span><?php echo e(trans('menus.review_management')); ?></span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu <?php echo e(Active::pattern('admin/reviews/*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/reviews/*', 'display: block;')); ?>">
+                        <li class="<?php echo e(Active::pattern('admin/reviews/unapproved')); ?>">
+                          <a href="<?php echo url('admin/reviews/unapproved'); ?>"><i class="fa fa-comment-o"></i> <?php echo e(trans('menus.unapproved_review')); ?></a>
+                        </li>
+                        <li class="<?php echo e(Active::pattern('admin/reviews/all')); ?>">
+                          <a href="<?php echo url('admin/reviews/all'); ?>"><i class="fa fa-comments-o"></i> <?php echo e(trans('menus.all_review')); ?></a>
+                        </li>
+                      </ul>
+                  </li>
+                 
+                <?php endif; ?>
+
+                <?php if (access()->can('view-access-management')): ?>
+                  <!--  <li class="<?php echo e(Active::pattern('admin/access/roles/*')); ?> treeview">
+                      <a href="#">
+                        <i class="fa fa-users"></i><span><?php echo e(trans('menus.roles_permission')); ?></span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu <?php echo e(Active::pattern('admin/access/roles/*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/access/roles/*', 'display: block;')); ?>">
+                        <li class="<?php echo e(Active::pattern('admin/access/roles/create')); ?>">
+                          <a href="<?php echo url('admin/access/roles/create'); ?>"><i class="fa fa-user-secret"></i> <?php echo e(trans('menus.create_role')); ?></a>
+                        </li>
+                        <li class="<?php echo e(Active::pattern('admin/access/roles')); ?>">
+                          <a href="<?php echo url('admin/access/roles'); ?>"><i class="fa fa-user-secret"></i> <?php echo e(trans('menus.header_buttons.roles.all')); ?></a>
+                        </li>
+                        <li class="<?php echo e(Active::pattern('admin/access/roles/permissions/create')); ?>">
+                          <a href="<?php echo url('admin/access/roles/permissions/create'); ?>"><i class="fa fa-user-secret"></i> <?php echo e(trans('menus.create_permission')); ?></a>
+                        </li>
+                        <li class="<?php echo e(Active::pattern('admin/access/roles/permissions')); ?>">
+                          <a href="<?php echo url('admin/access/roles/permissions'); ?>"><i class="fa fa-user-secret"></i> <?php echo e(trans('menus.header_buttons.permissions.all')); ?></a>
+                        </li>
+                      </ul>
+                  </li>
+                  -->
+                <?php endif; ?>
+
+
+                 <li class="<?php echo e(Active::pattern('admin/log-viewer*')); ?> treeview">
+                  <a href="#">
+                    <i class="fa fa-archive"></i><span><?php echo e(trans('menus.log-viewer.main')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/log-viewer*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/log-viewer*', 'display: block;')); ?>">
+                    <li class="<?php echo e(Active::pattern('admin/log-viewer')); ?>">
+                      <a href="<?php echo url('admin/log-viewer'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.log-viewer.dashboard')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/log-viewer/logs')); ?>">
+                      <a href="<?php echo url('admin/log-viewer/logs'); ?>"><i class="fa fa-search"></i> <?php echo e(trans('menus.log-viewer.logs')); ?></a>
+                    </li>
+                  </ul>
+                </li>
+
+                 <li class="<?php echo e(Active::pattern('admin/service/charge')); ?>"><a href="<?php echo route('backend.service.charge'); ?>"><i class="fa fa-money"></i><span><?php echo e(trans('menus.service_charge')); ?></span></a></li>
+
+                 <li class="<?php echo e(Active::pattern('admin/license')); ?>"><a href="<?php echo route('backend.license.all'); ?>"><i class="fa fa-credit-card"></i><span><?php echo e(trans('menus.license')); ?></span></a></li>
+
+              <?php if (access()->can('view-booking-management')): ?>
+                <li class="<?php echo e(Active::pattern('admin/bookings*')); ?> treeview">
+                  <a href="#">
+                    <i class="fa fa-shopping-bag"></i><span><?php echo e(trans('menus.booking_management')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/bookings*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/bookings*', 'display: block;')); ?>">
+                    <li class="<?php echo e(Active::pattern('admin/bookings/unapproved')); ?>">
+                      <a href="<?php echo url('admin/bookings/unapproved'); ?>"><i class="fa fa-shopping-bag"></i> <?php echo e(trans('menus.bookings.unapproved')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/bookings/approved ')); ?>">
+                      <a href="<?php echo url('admin/bookings/approved'); ?>"><i class="fa fa-shopping-bag"></i> <?php echo e(trans('menus.bookings.approved')); ?></a>
+                    </li>
+                  </ul>
+                </li>
+              <?php endif; ?>
+              <!-- Sidebar Menu -->
+                <?php if (access()->can('view-slider-management')): ?>
+                <li class="<?php echo e(Active::pattern('admin/slides*')); ?> treeview">
+                  <a href="#">
+                    <i class="fa fa-file-image-o"></i><span><?php echo e(trans('menus.slides.slide')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/slides*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/slides*', 'display: block;')); ?>">
+                    <!-- <li class="<?php echo e(Active::pattern('admin/slides/create')); ?>">
+                      <a href="<?php echo url('admin/slides/create'); ?>"><i class="fa fa-plus"></i> <?php echo e(trans('menus.slides.new')); ?></a>
+                    </li> -->
+                    <li class="<?php echo e(Active::pattern('admin/slides ')); ?>">
+                      <a href="<?php echo url('admin/slides/management'); ?>"><i class="fa fa-file-text-o"></i> <?php echo e(trans('menus.slides.Manages')); ?></a>
+                    </li>
+                    <!-- <li class="<?php echo e(Active::pattern('admin/slides ')); ?>">
+                      <a href="<?php echo url('admin/slides/settings'); ?>"><i class="fa fa-cogs"></i> <?php echo e(trans('menus.slides.setting')); ?></a>
+                    </li> -->
+                  </ul>
+                </li>
+                <?php endif; ?>
+
+                <!-- setting Menu -->
+                <?php if (access()->can('view-setting-management')): ?>
+                <li class="<?php echo e(Active::pattern('admin/settings*')); ?> treeview">
+                  <a href="#">
+                    <i class="fa fa-cogs"></i><span><?php echo e(trans('menus.settings')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/settings*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/settings*', 'display: block;')); ?>">
+                    <li class="<?php echo e(Active::pattern('admin/settings')); ?>">
+                      <a href="<?php echo url('admin/settings'); ?>"><i class="fa fa-cog"></i><?php echo e(trans('menus.general_settings')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/settings/reset-email')); ?>">
+                      <a href="<?php echo url('admin/settings/reset-email'); ?>"><i class="fa fa-envelope-o"></i> <?php echo e(trans('menus.reset_email_settings')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/settings/confirm-email')); ?>">
+                      <a href="<?php echo url('admin/settings/confirm-email'); ?>"><i class="fa fa-envelope-o"></i> <?php echo e(trans('menus.confirm_email_settings')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/settings/success-email')); ?>">
+                      <a href="<?php echo url('admin/settings/success-email'); ?>"><i class="fa fa-envelope-o"></i> <?php echo e(trans('menus.success_email_settings')); ?></a>
+                    </li>
+                    <li class="<?php echo e(Active::pattern('admin/settings/notify-email')); ?>">
+                      <a href="<?php echo url('admin/settings/notify-email'); ?>"><i class="fa fa-envelope-o"></i> <?php echo e(trans('menus.notify_email_settings')); ?></a>
+                    </li>
+                  </ul>
+                </li>
+                <?php endif; ?>
+
+                <?php if (access()->can('view-Permission-management')): ?>
+                <li class="<?php echo e(Active::pattern('admin/permission*')); ?> treeview">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-ok-sign"></i><span><?php echo e(trans('menus.permission.permission')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/permission*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/permission*', 'display: block;')); ?>">
+                  <li class="<?php echo e(Active::pattern('admin/permission/user ')); ?>"><?php echo link_to_route('admin.access.users.index', trans('menus.permission.user')); ?></li>
+
+                  <li class="<?php echo e(Active::pattern('admin/permission/roles ')); ?>"><?php echo link_to_route('admin.access.roles.index', trans('menus.permission.role')); ?></li>
+                   
+                  </ul>
+                </li>
+                
+                <?php endif; ?>
+
+                <?php if (access()->can('view-mainguidearea-management')): ?>
+                <li class="<?php echo e(Active::pattern('admin/miscellaneous*')); ?> treeview">
+                  <a href="#">
+                    <i class="glyphicon glyphicon-random"></i><span><?php echo e(trans('menus.guidearea.permission')); ?></span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu <?php echo e(Active::pattern('admin/miscellaneous*', 'menu-open')); ?>" style="display: none; <?php echo e(Active::pattern('admin/miscellaneous*', 'display: block;')); ?>">
+                  <!-- <li class="<?php echo e(Active::pattern('admin/miscellaneous/addguide')); ?>">
+                      <a href="<?php echo url('admin/miscellaneous/addguide'); ?>"><i class="glyphicon glyphicon-map-marker"></i> <?php echo e(trans('menus.guidearea.add')); ?></a>
+                  </li> -->
+
+                  <li class="<?php echo e(Active::pattern('admin/miscellaneous/guidAreaemanagement')); ?>">
+                      <a href="<?php echo url('admin/miscellaneous/guidAreaemanagement'); ?>"><i class="glyphicon glyphicon-th-list"></i> <?php echo e(trans('menus.guidearea.manage')); ?></a>
+                  </li>
+
+                  <!-- <li class="<?php echo e(Active::pattern('admin/miscellaneous/addlanguage')); ?>">
+                      <a href="<?php echo url('admin/miscellaneous/addlanguage'); ?>"><i class="glyphicon glyphicon-volume-up"></i> <?php echo e(trans('menus.guidearea.language_add')); ?></a>
+                  </li> -->
+
+                  <li class="<?php echo e(Active::pattern('admin/miscellaneous/languagemgmt')); ?>">
+                      <a href="<?php echo url('admin/miscellaneous/languagemanagement'); ?>"><i class="glyphicon glyphicon-th-list"></i> <?php echo e(trans('menus.guidearea.language_mgmt')); ?></a>
+                  </li>
+                  </ul>
+                </li>
+                <?php endif; ?>
+                
+
+              </ul><!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+          </aside>

@@ -1,0 +1,58 @@
+<?php $__env->startSection('title', 'User Management | Change User Password'); ?>
+
+<?php $__env->startSection('before-styles-end'); ?>
+    <?php echo HTML::style('css/plugin/jquery.onoff.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        User Management
+        <small>Change Password</small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li><?php echo link_to_route('admin.access.users.index', 'User Management'); ?></li>
+    <li><?php echo link_to_route('admin.access.users.edit', "Edit ".$user->name, $user->id); ?></li>
+    <li class="active"><?php echo link_to_route('admin.access.user.change-password', 'Change Password', $user->id); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('backend.access.includes.partials.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo Form::open(['route' => ['admin.access.user.change-password', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']); ?>
+
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                <?php echo Form::password('password', ['class' => 'form-control']); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Confirm Password</label>
+            <div class="col-lg-10">
+                <?php echo Form::password('password_confirmation', ['class' => 'form-control']); ?>
+
+            </div>
+        </div><!--form control-->
+
+        <div class="well">
+            <div class="pull-left">
+                <a href="<?php echo e(route('admin.access.users.index')); ?>" class="btn btn-danger btn-xs">Cancel</a>
+            </div>
+
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success btn-xs" value="Save" />
+            </div>
+            <div class="clearfix"></div>
+        </div><!--well-->
+
+    <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

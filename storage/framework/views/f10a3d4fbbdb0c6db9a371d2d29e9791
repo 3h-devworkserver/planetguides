@@ -1,0 +1,15 @@
+<?php foreach($videos as $gallery): ?>
+		<div class="thumbnail">
+			<a style="background-image:url(<?php echo e(asset('images/1.jpg')); ?>)" data-fancybox-group="gallery" href="<?php echo e($gallery->path); ?>?fs=1&amp;autoplay=1" class="video"></a>
+			
+			<?php echo Form::open(['route'=>'frontend.guide.video.delete','id'=>'videoDeleteForm']); ?> 
+                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <button type="submit" id="videoDeleteButton" onclick="return confirm('Are you sure you want to delete this item?');">
+                    <i>&times;</i>
+                </button> 
+            <?php echo Form::close(); ?>
+
+            
+		</div>	
+<?php endforeach; ?>

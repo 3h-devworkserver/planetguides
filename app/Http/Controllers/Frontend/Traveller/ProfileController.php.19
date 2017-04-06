@@ -1,0 +1,87 @@
+<?php namespace App\Http\Controllers\Frontend\Traveller;
+
+use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\User\UserContract;
+use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use App\Http\Requests\Frontend\User\TravellerSettingsRequest;
+use App\Http\Requests\Frontend\User\EmailRequest;
+use Kris\LaravelFormBuilder\FormBuilder;
+use App\Repositories\Frontend\Profileupload;
+use Illuminate\Http\Request;
+use App\Models\Profile;
+use DB;
+
+
+
+/**
+ * Class ProfileController
+ * @package App\Http\Controllers\Frontend
+ */
+class ProfileController extends Controller {
+
+	/**
+	 * @return mixed
+     */
+	public function index(FormBuilder $formBuilder)
+	{
+		
+		$user = access()->user();
+		//$profile = Profile::gettraveller($user->id);
+		//$profiles = json_encode($profile);
+		//var_dump($profiles); die();
+		
+         //var_dump($user); die();
+		//$profile_nickname = Profile::where('user_id', $user->id)->value('nickname');
+		//$profile =var_dump($profile_nickname); die();
+		//$user = access()->user();
+	//dd($user);
+        $form = $formBuilder->create('App\Forms\TravellerProfileForm', [
+            'method' => 'PATCH',
+            'url' => route('frontend.traveller.profile.update'),
+            'model' => $user
+           
+        ]);
+        
+       // die('am here');	
+         return view('frontend.traveller.profile', compact('form','user'))->withClass('profile');
+
+        
+	}
+
+	public function picUpload(ProfileUpload $hood){
+		$hood->upload();
+		return $hood->result();
+	}
+
+
+	/**
+	 * @param UserContract $user
+	 * @param UpdateProfileRequest $request
+	 * @return mixed
+	 */
+	public function update(UserContract $user, Request $request) {
+		//var_dump('a'); die();
+		$user->updateProfile($request->all());
+		
+		return redirect()->route('frontend.traveller.profile')->withFlashSuccess(trans("strings.profile_successfully_updated"));
+	}
+
+	public function settings(FormBuilder $formBuilder){
+
+		$user = access()->user();
+		return view('frontend.traveller.settings', compact('user'))->withClass('traveller-settings');
+	}
+
+	public function settingsUpdate(UserContract $user, TravellerSettingsRequest $request) {
+		$user->changePassword($request->all());
+		return redirect()->route('frontend.traveller.settings')->withFlashSuccess(trans("strings.settings_successfully_updated"));
+	}
+
+	public function emailUpdate(UserContract $user, EmailRequest $request) {
+		$user->changeEmail($request->all());
+		return redirect()->route('frontend.traveller.settings')->withFlashSuccess(trans("strings.settings_successfully_updated"));
+	}
+
+
+	
+}

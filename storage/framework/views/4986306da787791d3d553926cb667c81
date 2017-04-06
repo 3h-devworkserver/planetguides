@@ -1,0 +1,87 @@
+<?php $__env->startSection('title'); ?> Gallery | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<div class="container">
+	<div class="inner-gallery gallery">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2 class="text-center">Video Gallery</h2>
+				</div>
+			</div>
+		</div>
+        <?php echo $__env->make('includes.partials.messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<div class="row">
+        <?php if (access()->hasRole('Guide')): ?>
+			<div class="col-md-3 col-sm-4">
+				<div class="thumbnail">
+                 
+					<a  data-toggle="modal" data-target="#video-modal" class="bg-image">
+                    <div class="galleryUploadButton"><span class="uploadButton"><i class="fa fa-plus"></i></span></div>
+
+                    </a>
+				    <div class="galleryUploadProcess"></div>
+				</div>
+			</div>
+        <?php endif; ?>
+			<div class="gallery-list">
+				<?php echo $__env->make('frontend.guide.video-list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			</div>
+			
+		</div>
+
+	</div>
+</div>
+<?php echo $__env->make('frontend.guide.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+    <?php echo HTML::script('blueimp/load-image.all.min.js'); ?>
+
+    <?php echo HTML::script('blueimp/canvas-to-blob.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.iframe-transport.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-process.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-image.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-validate.js'); ?>
+
+
+    <?php echo HTML::script('js/customUpload.js'); ?>
+
+
+    <script>
+    $(document).ready(function() {
+        $(document).on('click', '#loadmore-gallery', function (e) {
+            e.preventDefault();
+            $('#loadmore-pagination #loadmore-loader').show();
+            $('#loadmore-pagination #loadmore-gallery').hide();
+            $.ajax({
+                type:'GET',
+                url : $(this).attr('href'),
+                }).done(function (data) {
+                    $('#loadmore-pagination').remove();
+                    $('#loadmore-pagination #loadmore-loader').hide();
+                    $('#loadmore-pagination #loadmore-gallery').show();
+                    $('.gallery-list').append(data.html);
+                })
+            });
+        });
+
+</script> 
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-styles-end'); ?>
+  <?php echo HTML::style('blueimp/css/jquery.fileupload.css'); ?>
+
+  <?php echo HTML::style('blueimp/css/jquery.fileupload-ui.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

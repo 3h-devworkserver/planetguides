@@ -1,0 +1,59 @@
+<?php $__env->startSection('title', trans('menus.slides_management')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.slides_management')); ?>
+
+        <!-- <small>Slides Reviews</small> -->
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li class="active">Slides Reviews</li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Slides Review</h3>
+      <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <?php echo Form::model($slide, ['route' => ['admin.slides.update', $slide->id], 'class' => 'slider-backend', 'role' => 'form', 'method' => 'PATCH','files'=>true]); ?>
+
+        
+          
+            <div class="form-group">
+                <label>Title</label>
+                <?php echo Form::input('text', 'caption',null, ['class' => 'form-control', 'id' => 'caption','placeholder' => trans('strings.caption')]); ?>
+
+            </div>
+            <!-- <div class="thumbnail radioconsistency form-group"> -->
+            <div class="thumbnail radioconsistency form-group preview">
+              <!-- <a style="background-image:url(<?php echo e(asset($slide->path)); ?>)"  data-fancybox-group="gallery" title="<?php echo e($slide->caption); ?> " class="fancybox bg-image"></a> -->
+              <div class="bg-image sliderImage" style="background-image:url(<?php echo e(asset($slide->path)); ?>)"></div>
+            </div>
+            <div class="">
+              <span class="btn btn-file">
+                  <i class="fa fa-folder-open" aria-hidden="true"></i> Browse <?php echo Form::file('image',['class'=>'sliderUpload']); ?>
+
+              </span>
+              <?php echo Form::hidden('id',$slide->id); ?>
+
+                <?php echo Form::submit('Save', array('class'=>'send-btn btn btn-orange')); ?>
+
+            </div>
+      <?php echo Form::close(); ?>
+
+    </div><!-- /.box-body -->
+</div>
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

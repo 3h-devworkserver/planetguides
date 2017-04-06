@@ -1,0 +1,207 @@
+<?php /* ?>
+@extends('frontend.layouts.master')
+@section('title'){{ $siteTitle }}@endsection
+@section('banner')
+	@include('frontend.includes.banner')
+@stop
+@section('content')
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header">
+						<h2 class="text-center">Top Guides</small></h2>
+					</div>
+				</div>
+			</div>
+			<div class="guides">
+				<div class="row">
+					@foreach ($guides as $guide)
+			@if($guide->user->confirmed == 1)
+					<div class="col-sm-6 col-md-3">
+						<div class="thumbnail">
+							<a href="{{ URL::to('guide/'.$guide->user->username) }}">
+								<div style="background-image:url({{ asset($guide->user->profilePic) }})"></div>
+							</a>
+							<div class="caption">
+								<h3><a href="{{ URL::to('guide/'.$guide->user->username) }}">{{ $guide->user->name }}</a></h3>
+								<div class="experience pull-left">
+									<em>Experience : {{ $guide->experience}}</em>
+								</div>
+								<div class="rating pull-right">
+									<span class="guideStars">{{ $guide->rating_cache }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+			@endif
+				@endforeach
+				</div><!--end row-->
+
+				
+			</div> <!--end guides-->
+			
+@stop
+
+@section('after-scripts-end')
+
+
+<script type="text/javascript">
+	$(function() {    		
+		$('span.guideStars').stars();
+	});
+
+	$.fn.stars = function() {
+		return $(this).each(function() {
+			$(this).html($('<span />').width(Math.max(0, (Math.min(5, parseFloat($(this).html())))) * 16));
+		});
+	}
+
+	$(function() {
+		var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+		var firstDay = new Date(y, m, 1);
+		var lastDay = new Date(y, m + 1, 0);
+
+		var dateToday = new Date();
+  		$('#date-range').daterangepicker({
+      		autoUpdateInput: false,
+      		autoApply: true,
+       		minDate: dateToday,
+  		});
+	});
+
+	$('#autocomplete-name').autocomplete({
+        serviceUrl: base_url+'/autocomplete/search?type=name',
+        dataType: 'json',
+        type: 'GET',
+        onSelect: function (suggestion) {
+            $('#autocomplete-name').val(suggestion.value);
+        },
+    });
+
+</script>
+@stop
+ * <?php */ ?>
+ 
+
+ <!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    
+    <title>GUIDENP.COM - We are Coming Soon</title>
+    <meta name="description" content="guidenp">
+    <meta name="author" content="guidenp">
+    <meta name="authorUrl" content="http://www.guidenp.com">
+    
+    <!-- Mobile Specific Meta -->   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+    <!-- Bootstrap -->
+    <link href="./public/index_files/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="./public/index_files/style.css">
+    <link rel="stylesheet" href="./public/index_files/responsive.css">
+    <link rel="stylesheet" href="./public/index_files/TimeCircles.css">
+
+    <!-- Font Awesome -->
+    <link href="./public/index_files/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Added google font -->
+    <link href="./public/index_files/css" rel="stylesheet" type="text/css">
+
+    <!--Fav and touch icons-->
+
+	<!--[if IE 9]> 
+    	<link rel="stylesheet" href="assets/css/ie9.css">
+    <![endif]-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+ <body>
+ <div class="bg">
+	 <div class="bg-color">
+		  <div class="container content">
+	 
+				<div class="row">
+					<div class=" clearfix">
+						<div class="col-sm-12">
+						    <br />
+						   <img src="index_files/guidenp.png" width="105" height"100" />
+						   <br />
+						   <br />
+						   <br />
+						   <h3>we are very excited to</h3>
+						   <h1>launch Our Website In Jan 1, 2017</h1>      
+						</div>
+						<div id="left-block" class="col-sm-4 text-center">
+							<img class="img-responsive" src="./index_files/mobile.png" alt="tab">
+						</div>
+						<div id="right-block" class="col-sm-8">
+							<div class="row">
+							   <div class="col-sm-offset-1 col-sm-10">
+									<div class="timing">
+										<div id="count-down" data-date="2017-01-01 08:00:00" data-tc-id="24707914-12bb-cf9f-a90f-960fe376d659">
+											
+										<div class="time_circles"><canvas width="620" height="155"></canvas><div class="textDiv_Days" style="top: 54px; left: 0px; width: 155px;"><h4 style="font-size: 11px; line-height: 11px;">Days</h4><span style="font-size: 33px; line-height: 11px;">00</span></div><div class="textDiv_Hours" style="top: 54px; left: 155px; width: 155px;"><h4 style="font-size: 11px; line-height: 11px;">Hours</h4><span style="font-size: 33px; line-height: 11px;">00</span></div><div class="textDiv_Minutes" style="top: 54px; left: 310px; width: 155px;"><h4 style="font-size: 11px; line-height: 11px;">Minutes</h4><span style="font-size: 33px; line-height: 11px;">00</span></div><div class="textDiv_Seconds" style="top: 54px; left: 465px; width: 155px;"><h4 style="font-size: 11px; line-height: 11px;">Seconds</h4><span style="font-size: 33px; line-height: 11px;">00</span></div></div></div>
+									</div>
+									<!-- /.timing -->
+							   </div>
+							</div>
+							<div class="row">
+							  <div class="col-sm-offset-2 col-sm-8">
+								<p class="alert-success"></p>
+								<p class="alert-warning"></p>
+							  </div>
+							</div>                    
+							<p class="followus"></p>
+							<ul class="social-icon">
+								<li><a href="https://www.facebook.com/whoismyguide" target="_blank"><i class="fa"><img src="index_files/findusfacebook.png" width="201" height"65" /></i></a></li>
+							</ul>              
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .container end here -->
+	 </div>
+ </div>
+   
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./public/index_files/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./public/index_files/bootstrap.min.js"></script>
+    <script src="./public/index_files/TimeCircles.js"></script>
+    <script src="./public/index_files/jquery.ajaxchimp.min.js"></script>
+    <script src="./public/index_files/jquery.placeholder.js"></script>
+    <script type="text/javascript">
+    	$(function() {
+				// Invoke the plugin
+				$('input, textarea').placeholder();
+			});
+    </script>
+    <script>
+      $("#count-down").TimeCircles(
+       {   
+           circle_bg_color: "#8a7f71",
+           use_background: true,
+           bg_width: 1.0,
+           fg_width: 0.02,
+           time: {
+                Days: { color: "#fefeee" },
+                Hours: { color: "#fefeee" },
+                Minutes: { color: "#fefeee" },
+                Seconds: { color: "#fefeee" }
+            }
+       }
+    );
+    
+    </script>
+    
+  
+</body></html>
+

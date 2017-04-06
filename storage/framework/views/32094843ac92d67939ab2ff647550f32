@@ -1,0 +1,33 @@
+<?php foreach($licenses as $gallery): ?>
+<div class="thumbnail">
+			<a style="background-image:url(<?php echo e($gallery->imagesmall); ?>)"  data-fancybox-group="gallery" href="<?php echo e($gallery->path); ?>" title="<?php echo e($gallery->caption); ?> " class="fancybox bg-image"></a>
+			
+			<?php echo Form::open(['url'=>'#','id'=>'addlicenseDeleteForm']); ?> 
+                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <?php echo Form::hidden('user_id',$gallery->user_id); ?>
+
+	                <button type="submit" id="galleryDeleteButton" onclick="return confirm('Are you sure you want to delete this item?');">
+	                    <i>&times;</i>
+	                </button> 
+            <?php echo Form::close(); ?>
+
+                
+		</div>	
+		<?php /* <div class="thumbnail">
+			<a style="background-image:url(<?php echo e(asset($gallery->path)); ?>)"  data-fancybox-group="gallery" href="<?php echo e(asset($gallery->path)); ?>" title="<?php echo e($gallery->caption); ?> " class="fancybox bg-image"></a>
+			
+			<?php echo Form::open(['url'=>'#','id'=>'addlicenseDeleteForm']); ?> 
+                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <?php echo Form::hidden('user_id',$gallery->user_id); ?>
+
+	                <button type="submit" id="galleryDeleteButton" onclick="return confirm('Are you sure you want to delete this item?');">
+	                    <i>&times;</i>
+	                </button> 
+            <?php echo Form::close(); ?>
+
+                
+		</div>	 */ ?>
+ <?php endforeach; ?>
+ 

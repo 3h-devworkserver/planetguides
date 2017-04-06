@@ -1,0 +1,48 @@
+<?php $__env->startSection('title', trans('menus.permission_management') . ' | ' . trans('menus.create_permission_group')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.permission_management')); ?>
+
+        <small><?php echo e(trans('menus.create_permission_group')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li><?php echo link_to_route('admin.access.users.index', trans('menus.user_management')); ?></li>
+    <li><?php echo link_to_route('admin.access.roles.permissions.index', trans('menus.permission_management')); ?></li>
+    <li class="active"><?php echo link_to_route('admin.access.roles.permission-group.create', trans('menus.create_permission_group')); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <?php echo $__env->make('backend.access.includes.partials.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo Form::open(['route' => 'admin.access.roles.permission-group.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']); ?>
+
+
+    <div class="form-group">
+        <?php echo Form::label('name', trans('validation.attributes.permission_group_name'), ['class' => 'col-lg-2 control-label']); ?>
+
+        <div class="col-lg-10">
+            <?php echo Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.permission_group_name')]); ?>
+
+        </div>
+    </div><!--form control-->
+
+    <div class="well">
+        <div class="pull-left">
+            <a href="<?php echo route('admin.access.roles.permissions.index'); ?>" class="btn btn-danger btn-xs"><?php echo e(trans('strings.cancel_button')); ?></a>
+        </div>
+
+        <div class="pull-right">
+            <input type="submit" class="btn btn-success btn-xs" value="<?php echo e(trans('strings.save_button')); ?>" />
+        </div>
+        <div class="clearfix"></div>
+    </div><!--well-->
+
+    <?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

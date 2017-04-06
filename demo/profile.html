@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Guides Profile</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800italic,800,700italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/sumoselect.css">
+
+	<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+	<link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	<link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery-ui.js"></script>
+		
+	<script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+	<script src="js/owl.carousel.min.js"></script> <!-- multistep login/signup form-->
+    
+	<script src="js/jquery.sumoselect.min.js"></script>
+	<script src="js/custom.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="index.html"><img src="images/logo-25.png"></a>
+	    </div>
+
+		<div class="language-select">
+			<div class="form-group">
+	            <div class="dropdown" id="dropdownMenu2">
+	                <button class="btn btn-default"
+	                        data-toggle="dropdown">
+	                    <span id="dropdown_title2">English</span>
+	                    <span class="caret"></span>
+	                </button>
+	                <ul class="dropdown-menu" >
+	                    <li><a tabindex="-1" href="#">French</a></li>
+	                    <li><a tabindex="-1" href="#">Spanish</a></li>
+	                    <li><a tabindex="-1" href="#">English</a></li>
+	                </ul>
+	            </div>  
+   	  		</div>
+   		 </div>
+
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1 ">
+	      <ul class="nav navbar-nav ">
+	        <li class="active"><a href="#">How it works <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">FAQ</a></li>
+	        <li><a href="#" data-toggle="modal" data-target="#login-popup"><i class="fa fa-user"></i></span>Sign in</a></li>
+	        <li><a href="#"><i class="fa fa-shopping-cart"></i></span>Cart</a></li>
+	        <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
+	      </ul>
+	    </div><!-- /navbar-collapse -->
+	  </div><!-- /container-fluid -->
+	</nav>
+
+	<section class="popup-form">
+		<div class="modal fade" id="login-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Login</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-6 user-option">
+								<h4>Use other accounts</h4>
+								<p>You can also sign in using your Facebook Account or Google Account </p>
+								<a href="" class="btn btn-primary btn-lg btn-facebook">
+									<i class="fa fa-facebook"></i>
+									Login with Facebook
+								</a>
+							</div>
+							<div class="col-md-6 user-login">
+								<form role="form">
+							  		<div class="form-group">
+							    		<label for="exampleInputEmail1">Email address</label>
+											<div class="input-group">
+							         			<div class="input-group-addon">
+							         				<i class="fa fa-user"></i>
+							         			</div>
+								   	 			<input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+											</div>
+							  		</div>
+							  		<div class="form-group">
+							    		<label for="exampleInputPassword1">Password</label>
+							    			<div class="input-group">
+							         			<div class="input-group-addon">
+							         				<i class="fa fa-lock"></i>
+							         			</div>
+								   	  			<input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+											</div>
+							  		</div>
+
+							 						  
+							  		<div class="checkbox">
+							    		<label>
+							      			<input type="checkbox"> Remember me
+							    		</label>
+							    		<a class="pull-right" href="#">
+							    			<i>Forgot Password?</i>
+							    		</a>
+							  		</div>
+							  		<button class="btn btn-default" type="submit">Submit</button>
+								</form>
+								<em>Don't have an account yet? <a href="#" id="next">Sign up</a></em>
+							</div> <!--end user login-->
+						</div> <!--end row-->
+					</div> <!-- end modal-body-->
+				</div> <!-- end modal-content -->
+			</div> <!-- end modal-dialog -->
+		</div> <!-- end modal -->
+
+
+		<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
+					</div>
+					<div class="modal-body">
+						<button class="btn btn-primary btn-lg" id="become-host">Become a Guide</button>
+
+						<div class="or-divider">
+							<span>or</span>
+						</div>
+
+			      		<button class="btn btn-primary btn-lg" id="travel">I Want to Travel</button>
+		      		</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="host-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">BECOME GUIDE</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-7 new-registration">
+							<form role="form">
+									<div class="form-group">
+										<label for="exampleInputText">First name</label>
+										<input type="text" placeholder="First Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputText">Last name</label>
+										<input type="text" placeholder="Last Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email address</label>
+										<input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Password</label>
+										<input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+									</div>
+		
+									<button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+								</form>
+						</div>
+						<div class="col-md-5 fb-login text-center">
+							<span class="badge pull-right">or</span>
+							<div class="fb-logo"></div>
+							<p>You may also login through your existing Facebook by clicking the button below and entering your username and password. </p>
+							<a href="" class="btn btn-primary btn-lg btn-facebook">
+								<i class="fa fa-facebook"></i>Login with Facebook
+							</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+					
+					<button type="button" class="back btn btn-defualt pull-left">Back</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="travel-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Travel Title</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-7 new-registration">
+							<form role="form">
+									<div class="form-group">
+										<label for="exampleInputText">First name</label>
+										<input type="text" placeholder="First Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputText">Last name</label>
+										<input type="text" placeholder="Last Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email address</label>
+										<input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Password</label>
+										<input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+									</div>
+		
+									<button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+								</form>
+						</div>
+						<div class="col-md-5 fb-login text-center">
+							<span class="badge pull-right">or</span>
+							<div class="fb-logo">
+								
+							</div>
+							<p>You may also login through your existing Facebook by clicking the button below and entering your username and password.</p>
+							<a href="" class="btn btn-primary btn-lg btn-facebook">
+								<i class="fa fa-facebook"></i>Login with Facebook
+							</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="back btn btn-defualt pull-left">Back</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="profile-banner" style="background-image:url(images/tour.jpg)">
+		<div class="overlay"></div>
+	</section>
+	<div class="search-container">
+		<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="search-wrap">
+							<div class="search-cat">
+								<div class="select-type type">
+									
+									<form method="get">
+									<!-- <div class="SumoSelect" tabindex="0"> -->
+										<select multiple="multiple" name="somename0" class="testselect2" placeholder="Type">
+											<option value="tour">Tour</option>
+											<option value="trekkiing">Trekkiing</option>
+											<option value="safari">Safari</option>
+											<option value="bird watching">Bird Watching</option>
+											<option value="Rafting">Rafting</option>
+											<option value="Advanture Sports">Advanture Sports</option>
+											<option value="Peaking Climbing">Peaking Climbing</option>
+											<option value="Cycling">Cycling</option>
+											<option value="Yoga-Meditation">Yoga-Meditation</option>
+										</select>
+									</form>
+
+								</div>
+
+								<div class="select-type">
+								<!-- <select class="form-control">
+									<option>Language</option>
+									 <option>Spanish</option>
+									 <option>Japanese</option>
+								</select> -->
+								<div class="dropdown availability">
+									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Availability
+									<span><i></i></span>
+									</button>
+									<div class="dropdown-menu">
+										<ul class="" aria-labelledby="dropdownMenu1">
+											<label>
+											<input type="radio" name="date" class="single">Single Day
+											</label>
+											<label>
+											<input type="radio" name="date" class="between">Between Days
+											</label>
+										</ul>
+
+										<div class="single-date-select">
+											<p>
+												<label>Date:</label>
+											 	<input type="text" id="datepicker">
+											 </p>
+											 <button class="btn btn-primary cust-btn-sm pull-right">Select</button>
+										</div>
+										<div class="between-date-selection">
+											<p>
+												<label for="from">From :</label>
+												<input type="text" id="from" name="from">
+											</p>
+											<p>
+												<label for="to">To</label>
+												<input type="text" id="to" name="to">
+											</p>
+											<button class="btn btn-primary cust-btn-sm pull-right">Select</button>
+										</div>
+									</div>
+								</div>
+							</div>
+								<div class="select-type">
+									<!-- <select class="form-control">
+										<option>Language</option>
+										 <option>Spanish</option>
+										 <option>Japanese</option>
+									</select> -->
+
+									<form method="get">
+									<!-- <div class="SumoSelect" tabindex="0"> -->
+										<select multiple="multiple" name="somename0" class="testselect2" placeholder="Select Language">
+											<option value="Spanish">Spanish</option>
+											<option value="English">English</option>
+											<option value="French">French</option>
+										</select>
+									</form>
+								</div>
+								<div class="select-type select-one">
+								<!-- <select class="form-control">
+										<option>Order</option>
+										<option>Experience</option>
+										<option>Rating</option>
+									</select> -->
+									<form method="get">
+										<select placeholder="Order" class="SlectBox">
+											<option value=""></option>
+											<option value="Experience">Experience</option>
+											<option value="Rating">Rating</option>
+										</select>
+									</form>
+								</div>
+								<div class="input-type">
+									<input type="text" placeholder="Name, Destination">
+								</div>
+								<div class="submit-wrap">
+									<!-- <input type="submit" value="" class="btn btn-danger"> -->
+									<button class="btn btn-danger"><i class="fa fa-search"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		
+	</div>
+
+	<section class="guide-profile">
+		<div class="container">
+			<div class="row guide-wrapper">
+				<div class="col-md-9">
+					<div class="guide-name">
+						<div class="name pull-left">
+							<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Certified guide"><i class="fa fa-certificate"></i></button>
+							<h3 class="">Anthony Bell</small></h3>
+						</div>
+						<div class="rating-review pull-right text-center">
+								<span class="rating remarkable" data-toggle="tooltip" date-placement="top" title="Remarkable">
+									<span>5</span>
+								</span>
+								<span>
+									<a href="#">Reviews</a>
+								</span>
+						</div>
+					</div> <!-- guide-name closing -->
+				</div> <!-- col-md-12 closing -->
+			</div> <!--row closing -->
+
+			<div class="row">
+				<div class="col-md-3">
+					<div class="traveller-rating">
+						<div class="title">
+							<h4>Guide Rating</h4>
+							<div class="rating-wrap">
+								<div class="rating-type">
+									<p>Excellent</p>
+										<div class="progress">
+											<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+											<span class="sr-only">60% Complete</span>
+											</div>
+										</div>
+									
+									<small class="pull-right">20</small>
+								</div>
+
+								<div class="rating-type">
+									<p>Very Good</p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+											<span class="sr-only">60% Complete</span>
+										</div>
+									</div>
+									<small class="pull-right">10</small>
+								</div>
+
+								<div class="rating-type">
+									<p>Average</p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+											<span class="sr-only">60% Complete</span>
+										</div>
+									</div>
+									<small class="pull-right">2</small>
+								</div>
+
+								<div class="rating-type">
+									<p>Poor</p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">
+											<span class="sr-only">60% Complete</span>
+										</div>
+									</div>
+									<small class="pull-right">0</small>
+								</div>
+
+								<div class="rating-type">
+									<p>Terrible</p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+											<span class="sr-only">60% Complete</span>
+										</div>
+									</div>
+									<small class="pull-right">0</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="review-sm">
+						<div class="title">
+							<h4>Recent Reviews</h4>
+						</div>
+						<div class="reivew-wrap">
+							<div class="review-by">
+								<div class="figure" style="background-image:url(images/guide-2.jpg)">
+								</div>
+								<h5><a href="#"> Allan Tong</a>
+									<span>1 review</span>
+								</h5>
+								<a href="#" class="review-text">
+									<i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod at delectus pariatur debitis dolorum eligendi temporibus...<i class="fa fa-quote-right"></i>
+								</a>
+							</div>
+							
+							<div class="review-by">
+								<div class="figure" style="background-image:url(images/guide-1.jpg)">
+								</div>
+								<h5><a href="#"> Anna Rose</a>
+									<span>1 review</span>
+								</h5>
+								<a href="#" class="review-text">
+									<i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod at delectus pariatur debitis dolorum eligendi temporibus...<i class="fa fa-quote-right"></i>
+								</a>
+							</div>
+
+							
+							<div class="review-by">
+								<div class="figure" style="background-image:url(images/guide-3.jpg)">
+								</div>
+								<h5><a href="#"> Rosee</a>
+									<span>1 review</span>
+								</h5>
+								<a href="#" class="review-text">
+									<i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod at delectus pariatur debitis dolorum eligendi temporibus...<i class="fa fa-quote-right"></i>
+								</a>
+							</div>
+							<div class="view-more">
+								<a href="#">View all Review</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="row profile-content">
+						<div class="col-md-3">
+							<div class="profile-img">
+								<a class="fancybox" href="images/guide-2.jpg" data-fancybox-group="gallery" title="Anthony Bell" style="background-image:url(images/guide-2.jpg)"></a>
+
+							</div>
+						</div>
+						<div class="col-md-9">
+							<div class="guide-detail">
+								<ul>
+									<li>
+										<p><span>Tour ID :</span>NP27227</p>
+									</li>
+									<li>
+										<p><span>Experience :</span>Since 2000</p>
+									</li>
+									<li>
+										<p><span>Gender :</span>Male</p>
+									</li>
+									<li>
+										<p><span>Main Guiding Area :</span>Kathmandu</p>
+									</li>
+									<li>
+										<p><span>Other Guiding Aerea :</span>Pokhara, Chitawan</p>
+									</li>
+									<li>
+										<p><span>Language :</span>English, French, Hindi</p>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="about-me">
+						<div class="row">
+							<div class="col-md-3">
+								<strong>About Me</strong>
+							</div>
+							<div class="col-md-9">
+								<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam quod, expedita atque, sapiente ab, eius possimus odio repudiandae minus temporibus dolorum molestiae aut vero nisi a odit! Architecto, impedit, aperiam.</span><span>Officia adipisci consequatur, fugit debitis cum corrupti modi, eum numquam ducimus eaque expedita, quos? Tempora totam quia dignissimos, vitae quasi maiores velit repellat ad, est consequatur voluptatibus consectetur iusto nam.</span></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="certificate">
+						<div class="row">
+							<div class="col-md-3">
+								<strong>Professional License/Certificate</strong>
+							</div>
+							<div class="col-md-9">
+								<div class="certificate-img">
+									<a class="fancybox" href="images/guide-1.jpg" data-fancybox-group="gallery" title="Bhaktapur Durbar Square" style="background-image:url(images/guide-1.jpg)"></a>
+
+									<a class="fancybox" href="images/guide-2.jpg" data-fancybox-group="gallery" title="Phokhara" style="background-image:url(images/guide-2.jpg)"></a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="video">
+						<div class="row">
+							<div class="col-md-3">
+								<strong>Videos</strong>
+							</div>
+							<div class="col-md-9">
+								<div class="video-gallery">
+									<a class="video" href="http://www.youtube.com/v/ZeStnz5c2GI?fs=1&autoplay=1#sthash.XR75mzng.dpuf" data-fancybox-group="gallery" title="The FallTape" style="background-image:url(images/1.jpg)">
+										<!-- <img alt="" src="images/1.jpg"> -->
+									</a>
+
+									<a class="video" href="http://www.youtube.com/v/z2xjxZcfrwY?fs=1&autoplay=1" data-fancybox-group="gallery" title="The FallTape" style="background-image:url(images/2.jpg)">
+										<!-- <img alt="" src="images/guide-1.jpg"> -->
+									</a>
+
+									<a class="video" href="http://www.youtube.com/v/ZeStnz5c2GI?fs=1&autoplay=1#sthash.XR75mzng.dpuf" data-fancybox-group="gallery" title="The FallTape" style="background-image:url(images/1.jpg)">
+										<!-- <img alt="" src="images/guide-1.jpg"> -->
+									</a>
+								</div>
+								<button class="btn btn-primary pull-right cust-btn-sm">view more</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="gallery">
+						<div class="row">
+							<div class="col-md-3">
+								<strong>Gallery</strong>
+							</div>
+							<div class="col-md-9">
+								<div class="img-gallery">
+									<a class="fancybox" href="images/bhaktapur-durbar.jpg" data-fancybox-group="gallery" title="Bhaktapur Durbar Square" style="background-image:url(images/bhaktapur-durbar.jpg)"></a>
+
+									<a class="fancybox" href="images/paragliding.jpg" data-fancybox-group="gallery" title="Phokhara" style="background-image:url(images/paragliding.jpg)"></a>
+								</div>
+								<button class="btn btn-primary pull-right cust-btn-sm">view more</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="review">
+						<div class="row">
+							<div class="col-md-12">
+								<strong>Leave your review here</strong>
+								<form action="">
+									<div class="form-group">
+										<textarea class="form-control" id="Review" placeholder="Please write at least 140 characters about your personal experience at this restaurant. If the restaurant hosted you and is expecting this review, please mention so."></textarea>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="review-list">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="media">
+									  <div class="media-left">
+									    <a href="#">
+									      <img class="media-object" src="images/guide-1.jpg" alt="">
+									    </a>
+									  </div>
+									  <div class="media-body">
+									    <h5 class="media-heading">
+									    	<a href="#">Anthony Bell</a>
+										    <span class="rating remarkable">
+										    	<span>5</span>
+										    </span>
+									    </h5>
+									    <time>1 month ago</time>
+									  </div>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, corporis. Ullam officiis quod vero soluta totam, quasi saepe porro facere dolor fugit alias velit atque ut modi deleniti sed sint?</p>
+									</div>
+
+									<div class="media">
+									  <div class="media-left">
+									    <a href="#">
+									      <img class="media-object" src="images/guide-2.jpg" alt="">
+									    </a>
+									  </div>
+									  <div class="media-body">
+									    <h5 class="media-heading">
+									    	<a href="#">Anthony Bell</a>
+										    <span class="rating average">
+										    	<span>3</span>
+										    </span>
+									    </h5>
+									    <time>2 month ago</time>
+									  </div>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, corporis. Ullam officiis quod vero soluta totam.</p>
+									</div>
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button class="btn btn-primary cust-btn-lg">view more</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+
+		</div>
+	</section>
+	
+
+	<footer>
+		<div class="container">
+			<div class="col-md-6">
+				<div class="logo-quote">
+					<h4>Lorem ipsum dolor sit amet, consectetur </h4>
+					<small>incididunt ut labore et dolore magna aliqua. </small>
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="">About</a></li>
+						<li><a href="">How it Works</a></li>
+						<li><a href="">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6 text-right">
+				<h4>Go Social</h4>
+				<div class="social">
+					<ul>
+						<li><a href=""><i class="fa fa-facebook"></i></a></li>
+						<li><a href=""><i class="fa fa-twitter"></i></a></li>
+						<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+						<li><a href=""><i class="fa fa-pinterest"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="links">
+					<ul>
+						<li><a href="">Privacy</a></li>
+						<li><a href="">Terms &amp; Conditions</a></li>
+						<li><a href="">Sitemap</a></li>
+					</ul>
+				</div>
+				<a class="agency" href="http://www.3hammers.com">
+					Digital Agency
+					<img alt="3hammers" src="images/3hammers_footer.png">
+				</a>
+			</div>
+		</div>
+	</footer>
+
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+	  
+
+	<script type="text/javascript"> /*for language select-bootstrap*/
+		jQuery(document).ready(function($){
+			$("#dropdownMenu2").on("click", "li a", function() {
+	    		var platform = $(this).text();
+	    		$("#dropdown_title2").html(platform);
+			});
+		});   
+	</script>
+	<!-- (used for another language dropdown select)
+	<script type="text/javascript">
+		$('.dropdown-toggle').click(function() {
+			$(this).next('.dropdown-menu').slideToggle(500);
+		});
+	</script>
+	-->
+</body>
+</html>

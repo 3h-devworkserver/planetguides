@@ -1,0 +1,261 @@
+    <div class="modal fade" id="login-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel"><?php echo e(trans('labels.login_box_title')); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 user-option col-sm-6">
+                                <h4>Use other accounts</h4>
+                                <p>You can also sign in using your Facebook Account or Google Account </p>
+                                <a href="auth/login/facebook" class="btn btn-primary btn-lg btn-facebook">
+                                    <i class="fa fa-facebook"></i>
+                                    Login with Facebook
+                                </a>
+                            </div>
+                            
+                            <div class="col-md-6 user-login col-sm-6">
+                                <div class="message-append"></div>
+                               <?php echo Form::open(['url' => '#','role' => 'form', 'id'=>'myLoginForm']); ?>
+
+                                    <div class="form-group">
+                                       <?php echo Form::label('email', trans('validation.attributes.email')); ?>
+
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <?php echo Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email'), 'required', 'autocomplete' => 'off']); ?>
+
+                                                
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <?php echo Form::label('password', trans('validation.attributes.password')); ?>
+
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-lock"></i>
+                                                </div>
+                                                <?php echo Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.password'), 'required', 'autocomplete' => 'off']); ?>
+
+                                                
+                                            </div>
+                                    </div>
+
+                                                      
+                                    <div class="checkbox">
+                                        <label>
+                                            <?php echo Form::checkbox('remember'); ?> <?php echo e(trans('labels.remember_me')); ?>
+
+                                        </label>
+                                    
+                                           <?php echo link_to('#', trans('labels.forgot_password'), ['class' => 'pull-right','id' => 'forgotPassword']); ?>
+
+                                        
+                                    </div>
+                                    <?php echo Form::hidden('refferer','',['class'=>'refferer']); ?>
+
+                                     <?php echo Form::submit(trans('labels.login_button'), ['class' => 'btn btn-danger']); ?>
+
+                                     <div class="loader-overlay"><div class="custom-loader"></div></div>
+                                    
+                                <?php echo Form::close(); ?>
+
+                                <em>Don't have an account yet? <a href="#" id="next">Sign up</a></em>
+                            </div> <!--end user login-->
+                        </div> <!--end row-->
+                    </div> <!-- end modal-body-->
+                </div> <!-- end modal-content -->
+            </div> <!-- end modal-dialog -->
+        </div> <!-- end modal -->
+
+    <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="signup-option">
+                            <button class="btn btn-primary btn-block" id="become-host">Become a Guide</button>
+
+                            <div class="or-divider">
+                                <span>or</span>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" id="travel">I Want to Travel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="modal fade" id="host-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><?php echo e(trans('labels.become_guide')); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                   
+                        <div class="col-md-7 new-registration col-sm-7">
+                        <div class="message-append"></div>
+                           <?php echo Form::open(['url' => '#','role' => 'form', 'id'=>'myGuideForm']); ?>
+
+                                    <div class="form-group">
+                                       <?php echo Form::label('fname', trans('validation.attributes.fname')); ?>
+
+                                       <?php echo Form::input('text', 'fname', old('fname'), ['class' => 'form-control','placeholder' => trans('validation.attributes.fname'), 'required']); ?>
+
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <?php echo Form::label('lname', trans('validation.attributes.lname')); ?>
+
+                                       <?php echo Form::input('text', 'lname', old('lname'), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.lname')]); ?>
+
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                    <?php echo Form::label('email', trans('validation.attributes.email')); ?>
+
+                                    <?php echo Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email'), 'required']); ?>
+
+                                   
+                                    </div>
+                                    <div class="form-group">
+                                    <?php echo Form::label('password', trans('validation.attributes.password')); ?>
+
+                                    <?php echo Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.password'), 'required']); ?>
+
+                                        
+                                    </div>
+                                    <?php echo Form::input('hidden', 'form','Guide'); ?>
+
+                                    <?php echo Form::submit(trans('labels.register_button'), ['class' => 'btn btn-danger']); ?>
+
+                                    <div class="loader-overlay"><div class="custom-loader"></div></div>
+                               <?php echo Form::close(); ?>
+
+                        </div>
+                        <div class="col-md-5 fb-login text-center col-sm-5">
+                            <span class="badge pull-right">or</span>
+                            <div class="fb-logo"></div>
+                            <p>You may also login through your existing Facebook by clicking the button below and entering your username and password. </p>
+                            <a href="auth/login/facebook?utype=guide" class="btn btn-primary btn-lg btn-facebook">
+                                <i class="fa fa-facebook"></i>Login with Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="back btn btn-default pull-left">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="modal fade" id="travel-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><?php echo e(trans('labels.traveller')); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                   
+                        <div class="col-md-7 new-registration col-sm-7">
+                        <div class="message-append"></div>
+                             <?php echo Form::open(['url' => '#','role' => 'form', 'id'=>'myTravellerForm']); ?>
+
+                                    <div class="form-group">
+                                       <?php echo Form::label('fname', trans('validation.attributes.fname')); ?>
+
+                                       <?php echo Form::input('fname', 'fname', old('fname'), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.fname'), 'required']); ?>
+
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <?php echo Form::label('lname', trans('validation.attributes.lname')); ?>
+
+                                       <?php echo Form::input('lname', 'lname', old('lname'), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.lname')]); ?>
+
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                    <?php echo Form::label('email', trans('validation.attributes.email')); ?>
+
+                                    <?php echo Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email'), 'required']); ?>
+
+                                   
+                                    </div>
+                                    <div class="form-group">
+                                    <?php echo Form::label('password', trans('validation.attributes.password')); ?>
+
+                                    <?php echo Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.password'), 'required']); ?>
+
+                                        
+                                    </div>
+                                    <?php echo Form::input('hidden', 'form','Traveller'); ?>
+
+                                    <?php echo Form::submit(trans('labels.register_button'), ['class' => 'btn btn-danger']); ?>
+
+                                    <div class="loader-overlay"><div class="custom-loader"></div></div>
+                               <?php echo Form::close(); ?>
+
+                        </div>
+                        <div class="col-md-5 fb-login text-center col-sm-5">
+                            <span class="badge pull-right">or</span>
+                            <div class="fb-logo">
+                                
+                            </div>
+                            <p>You may also login through your existing Facebook by clicking the button below and entering your username and password.</p>
+                            <a href="auth/login/facebook?utype=traveller" class="btn btn-primary btn-lg btn-facebook">
+                                <i class="fa fa-facebook"></i>Login with Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="back btn btn-default pull-left">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="recoveryModal" class="modal fade in">
+   <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                <h4 id="myModalLabel" class="modal-title">Password recovery</h4>
+            </div>
+            <div class="modal-body">
+            <div class="reset-message"></div>
+                <?php echo Form::open(['url' => '#','role' => 'form', 'id'=>'recovery-form']); ?>
+
+                
+                <div class="forgetpasswrapper">  
+                    <div id="password-field">
+                    <?php echo Form::input('email', 'email','', ['class' => 'form-control', 'placeholder' => trans('validation.attributes.your_account_email'), 'required']); ?>
+
+                     <?php echo Form::submit(trans('labels.recover'), ['class' => 'btn btn-primary']); ?>                
+                         
+                        <div class="loader-overlay">
+                            <div class="custom-loader"></div>
+                        </div>
+                    </div>
+                </div>
+            
+              <button class="backSignIn btn btn-default pull-left" type="button">Back</button>
+ 
+            <?php echo Form::close(); ?>
+
+        </div>
+    </div>
+   </div>
+</div>

@@ -1,0 +1,14 @@
+<?php $__env->startSection('title'); ?><?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<div style="margin-top:75px;">
+	</div>
+	<div class="row">
+		<h2><?php echo $page->title; ?></h2>
+		<hr />
+	</div>
+	<div class="row">
+		<?php echo $page->content; ?>
+
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

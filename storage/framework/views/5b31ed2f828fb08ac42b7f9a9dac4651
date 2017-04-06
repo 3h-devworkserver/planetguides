@@ -1,0 +1,19 @@
+<?php foreach($videos as $gallery): ?>
+<div class="col-md-3">
+		<div class="thumbnail">
+			<a style="background-image:url(https://img.youtube.com/vi/<?php echo e($gallery->imagesmall); ?>/default.jpg)" data-fancybox-group="gallery" href="<?php echo e($gallery->path); ?>?fs=1&amp;autoplay=1" class="video bg-image fancy-box"></a>
+			
+			<?php echo Form::open(['url'=>'#','id'=>'videoDeleteForm']); ?> 
+                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <?php echo Form::hidden('user_id',$gallery->user_id); ?>
+
+                <button type="submit" id="videoDeleteButton" class="delete-btn" onclick="return confirm('Are you sure you want to delete this item?');">
+                    <span>&times;</span>
+                </button> 
+            <?php echo Form::close(); ?>
+
+            
+		</div>
+		</div>	
+<?php endforeach; ?>

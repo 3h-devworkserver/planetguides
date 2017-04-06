@@ -1,0 +1,237 @@
+<?php $roles = app('App\Repositories\Backend\Role\RoleRepositoryContract'); ?>
+
+
+
+<?php $__env->startSection('title', trans('menus.permission_management')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.user_management')); ?>
+
+        <small><?php echo e(trans('menus.permission_management')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-styles-end'); ?>
+    <?php echo HTML::style('css/backend/plugin/nestable/jquery.nestable.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li><?php echo link_to_route('admin.access.users.index', trans('menus.user_management')); ?></li>
+    <li class="active"><?php echo link_to_route('admin.access.roles.permissions.index', trans('menus.permission_management')); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('backend.access.includes.partials.header-buttons', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">Groups</a></li>
+            <li role="presentation"><a href="#permissions" aria-controls="permissions" role="tab" data-toggle="tab">Permissions</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="groups" style="padding-top:20px">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="alert alert-info">
+                            <i class="fa fa-info-circle"></i> This section allows you to organize your permissions into groups to stay organized. Regardless of the group, the permissions are still individually assigned to each role.
+                        </div><!--alert info-->
+
+                        <div class="dd permission-hierarchy">
+                            <ol class="dd-list">
+                                <?php foreach($groups as $group): ?>
+                                    <li class="dd-item" data-id="<?php echo $group->id; ?>">
+                                        <div class="dd-handle"><?php echo $group->name; ?> <span class="pull-right"><?php echo $group->permissions->count(); ?> permissions</span></div>
+
+                                        <?php if($group->children->count()): ?>
+                                            <ol class="dd-list">
+                                                <?php foreach($group->children as $child): ?>
+                                                    <li class="dd-item" data-id="<?php echo $child->id; ?>">
+                                                        <div class="dd-handle"><?php echo $child->name; ?> <span class="pull-right"><?php echo $child->permissions->count(); ?> permissions</span></div>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ol>
+                                        </li>
+                                    <?php else: ?>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ol>
+                        </div><!--master-list-->
+                    </div><!--col-lg-4-->
+
+                    <div class="col-lg-6">
+                        <div class="alert alert-info">
+                            <i class="fa fa-info-circle"></i> If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.
+                        </div><!--alert info-->
+
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th><?php echo e(trans('crud.permissions.groups.name')); ?></th>
+                                <th><?php echo e(trans('crud.actions')); ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($groups as $group): ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $group->name; ?>
+
+
+                                        <?php if($group->permissions->count()): ?>
+                                            <div style="padding-left:40px;font-size:.8em">
+                                                <?php foreach($group->permissions as $permission): ?>
+                                                    <?php echo $permission->display_name; ?><br/>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><?php echo $group->action_buttons; ?></td>
+                                </tr>
+
+                                <?php if($group->children->count()): ?>
+                                    <?php foreach($group->children as $child): ?>
+                                        <tr>
+                                            <td style="padding-left:40px">
+                                                <em><?php echo $child->name; ?></em>
+
+                                                <?php if($child->permissions->count()): ?>
+                                                    <div style="padding-left:40px;font-size:.8em">
+                                                        <?php foreach($child->permissions as $permission): ?>
+                                                            <?php echo $permission->display_name; ?><br/>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td><?php echo $child->action_buttons; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div><!--col-lg-8-->
+                </div><!--row-->
+
+            </div><!--groups-->
+
+            <div role="tabpanel" class="tab-pane" id="permissions" style="padding-top:20px">
+
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th><?php echo e(trans('crud.permissions.permission')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.name')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.dependencies')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.users')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.roles')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.group')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.group-sort')); ?></th>
+                        <th><?php echo e(trans('crud.permissions.system')); ?></th>
+                        <th><?php echo e(trans('crud.actions')); ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($permissions as $permission): ?>
+                            <tr>
+                                <td><?php echo $permission->name; ?></td>
+                                <td><?php echo $permission->display_name; ?></td>
+                                <td>
+                                    <?php if(count($permission->dependencies)): ?>
+                                        <?php foreach($permission->dependencies as $dependency): ?>
+                                            <?php echo $dependency->permission->display_name; ?><br/>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <span class="label label-success">None</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if(count($permission->users)): ?>
+                                        <?php foreach($permission->users as $user): ?>
+                                            <?php echo $user->name; ?><br/>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <span class="label label-danger">None</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $roles->findOrThrowException(1)->name; ?><br/>
+                                    <?php if(count($permission->roles)): ?>
+                                        <?php foreach($permission->roles as $role): ?>
+                                            <?php echo $role->name; ?><br/>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if($permission->group): ?>
+                                        <?php echo $permission->group->name; ?>
+
+                                    <?php else: ?>
+                                        <span class="label label-danger">None</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?php echo $permission->sort; ?></td>
+                                <td><?php echo $permission->system_label; ?></td>
+                                <td><?php echo $permission->action_buttons; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
+                <div class="pull-left">
+                    <?php echo e($permissions->total()); ?> <?php echo e(trans('crud.permissions.total')); ?>
+
+                </div>
+
+                <div class="pull-right">
+                    <?php echo e($permissions->render()); ?>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div><!--permissions-->
+        </div>
+    </div><!--permission tabs-->
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+    <?php echo HTML::script('js/backend/plugin/nestable/jquery.nestable.js'); ?>
+
+
+    <script>
+        $(function() {
+            var hierarchy = $('.permission-hierarchy');
+            hierarchy.nestable({maxDepth:2});
+
+            hierarchy.on('change', function() {
+                <?php if (access()->can('sort-permission-groups')): ?>
+                    $.ajax({
+                        url : "<?php echo route('admin.access.roles.groups.update-sort'); ?>",
+                        type: "post",
+                        data : {data:hierarchy.nestable('serialize')},
+                        success: function(data) {
+                            if (data.status == "OK")
+                                toastr.success("Hierarchy successfully saved.");
+                            else
+                                toastr.error("An unknown error occurred.");
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.error("An unknown error occurred: " + errorThrown);
+                        }
+                    });
+                <?php else: ?>
+                    toastr.error("You do not have permission to do that.");
+                <?php endif; ?>
+            });
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

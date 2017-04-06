@@ -1,0 +1,26 @@
+<div class="dash-profile">
+	<div class="profile">
+		<div class="profile-img bg-wrap" style="background-image:url(<?php echo e(asset($user->profilePic)); ?>)"></div>
+		<div class="top-right-separator"></div>
+		<div class="top-left-separator"></div>
+		<div class="circle-img bg-wrap" style="background-image:url(<?php echo e(asset($user->profilePic)); ?>)"></div>
+	</div>
+	<h4 class="profile-name"><?php echo e($user->name); ?></h4>
+	<?php echo Form::open(); ?>
+
+		<div class="view-profile <?php echo e(Active::pattern('traveller/profile*', 'dash-profile-upload')); ?>">
+			<a href="<?php echo e(url('/traveller/profile')); ?>">View Profile</a>
+			<span class="file-input">
+			  upload
+			<input 
+	        	type="file" 
+	        	accept="image/*" 
+	        	data-url="<?php echo e(route('frontend.traveller.profile.pic.upload')); ?>" 
+	        	name="profilePic" 
+	        	id="profilePic">
+			</span>
+			
+		</div>
+	<?php echo Form::close(); ?>
+
+</div>

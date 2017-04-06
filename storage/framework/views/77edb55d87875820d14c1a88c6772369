@@ -1,0 +1,25 @@
+<?php echo HTML::style('css/font-awesome/css/font-awesome.min.css'); ?>
+
+        <?php echo HTML::style('css/bootstrap.css'); ?>
+
+        <?php echo HTML::style('css/backend/chosen.min.css'); ?>
+
+
+          <?php echo HTML::script('js/backend/chosen.jquery.min.js'); ?>
+
+
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $("select.chosen-selectmain").chosen({width: "100%"});
+                    });
+        </script>
+<div class="form-group required" id="otherarea">
+      <select data-placeholder="Choose some other Guide area..." name="OtherGuidingArea[]" multiple="multiple" class="chosen-selectmain form-control margin">
+          <?php foreach($options as  $option): ?>
+          <option value="<?php echo e($option); ?>" >
+            <?php echo e($option); ?>
+
+          </option>
+          <?php endforeach; ?>
+      </select>
+</div><!--form control-->

@@ -1,0 +1,74 @@
+<?php
+use App\Models\Access\User\User;
+?>
+
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <small>My Commission</small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li class="active"><i class="fa fa-money"></i> My Commission</li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<div class="row">
+  <div class="col-md-12">
+    <?php if($bookings): ?>
+    <style>
+      tr:nth-child(even){
+        background-color: #dcdcdc;
+      }
+      tr:nth-child(odd){
+        background-color: #aaaaaa;
+      }
+    </style>
+      <table class="table">
+        <tr style="background: #EEE;">
+          <th>Traveler</th>
+          <th>Guide</th>
+          <th>Days</th>
+          <th>Dates</th>
+          <th>TXN ID</th>
+          <th>Commission</th>
+        </tr>
+        <?php foreach($bookings as $booking): ?>
+          <?php if(User::find($booking->uid) && User::find($booking->gid)): ?>
+             <tr>
+                <td>
+                  <?php echo e(User::find($booking->uid)->fname.' '.User::find($booking->uid)->lname); ?>
+
+                </td>
+                <td>
+                  <?php echo e(User::find($booking->gid)->fname.' '.User::find($booking->gid)->lname); ?>
+
+                </td>
+                <td>
+                  <?php echo e($booking->days); ?>
+
+                </td>
+                <td>
+                  <?php echo str_replace(',', "<br />", $booking->dates); ?>
+
+                </td>
+                <td>
+                  <?php echo $booking->transaction_id; ?>
+
+                </td>
+                <td>
+                  $ <?php echo e($booking->service_charge+$booking->next_service_charge); ?>
+
+                </td>
+              </tr>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </table>
+    <?php else: ?>
+      <h2 align="center">You have no commissions yet!</h2>
+    <?php endif; ?>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

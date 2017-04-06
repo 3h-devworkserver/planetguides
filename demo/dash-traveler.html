@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Top Guides</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800italic,800,700italic' rel='stylesheet' type='text/css'>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type="text/css" href="font-awesome-4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="css/sumoselect.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	  <!--<script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script> -->
+	<!--script src="//code.jquery.com/jquery-1.10.2.js"></script-->
+	
+	<script src="js/owl.carousel.min.js"></script> <!-- multistep login/signup form-->
+	<script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.sumoselect.min.js"></script>
+	<script src="js/custom.js"></script>
+
+
+		<!--
+        <script type="text/javascript">
+        $(document).ready(function () {
+        	//$('.SlectBox').SumoSelect();
+        	
+            // window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3 });
+             //window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
+             //window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
+             //window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true });
+            
+        });
+    </script>
+    -->
+
+
+
+
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="index.html"><img src="images/logo-25.png"></a>
+	    </div>
+	    
+		<div class="language-select">
+			<div class="form-group">
+	            <div class="dropdown" id="dropdownMenu2">
+	                <button class="btn btn-default"
+	                        data-toggle="dropdown">
+	                    <span id="dropdown_title2">English</span>
+	                    <span class="caret"></span>
+	                </button>
+	                <ul class="dropdown-menu" >
+	                    <li><a tabindex="-1" href="#">French</a></li>
+	                    <li><a tabindex="-1" href="#">Spanish</a></li>
+	                    <li><a tabindex="-1" href="#">English</a></li>
+	                </ul>
+	            </div>  
+   	  		</div>
+   		 </div>
+
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1 ">
+	      <ul class="nav navbar-nav ">
+	        <li class="active"><a href="#">How it works <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">FAQ</a></li>
+	        <li><a href="#" data-toggle="modal" data-target="#login-popup"><i class="fa fa-user"></i></span>Sign in</a></li>
+	        <li><a href="#"><i class="fa fa-shopping-cart"></i></span>Cart</a></li>
+	        <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
+	      </ul>
+	    </div><!-- /navbar-collapse -->
+	  </div><!-- /container-fluid -->
+	</nav>
+	
+	<section class="popup-form">
+		<div class="modal fade" id="login-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Login</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-6 user-option">
+								<h4>Use other accounts</h4>
+								<p>You can also sign in using your Facebook Account or Google Account </p>
+								<a href="" class="btn btn-primary btn-lg btn-facebook">
+									<i class="fa fa-facebook"></i>
+									Login with Facebook
+								</a>
+							</div>
+							<div class="col-md-6 user-login">
+								<form role="form">
+							  		<div class="form-group">
+							    		<label for="exampleInputEmail1">Email address</label>
+											<div class="input-group">
+							         			<div class="input-group-addon">
+							         				<i class="fa fa-user"></i>
+							         			</div>
+								   	 			<input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+											</div>
+							  		</div>
+							  		<div class="form-group">
+							    		<label for="exampleInputPassword1">Password</label>
+							    			<div class="input-group">
+							         			<div class="input-group-addon">
+							         				<i class="fa fa-lock"></i>
+							         			</div>
+								   	  			<input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+											</div>
+							  		</div>
+
+							 						  
+							  		<div class="checkbox">
+							    		<label>
+							      			<input type="checkbox"> Remember me
+							    		</label>
+							    		<a class="pull-right" href="#">
+							    			<i>Forgot Password?</i>
+							    		</a>
+							  		</div>
+							  		<button class="btn btn-default" type="submit">Submit</button>
+								</form>
+								<em>Don't have an account yet? <a href="#" id="next">Sign up</a></em>
+							</div> <!--end user login-->
+						</div> <!--end row-->
+					</div> <!-- end modal-body-->
+				</div> <!-- end modal-content -->
+			</div> <!-- end modal-dialog -->
+		</div> <!-- end modal -->
+
+
+		<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
+					</div>
+					<div class="modal-body">
+						<button class="btn btn-primary btn-lg" id="become-host">Become a Guide</button>
+
+						<div class="or-divider">
+							<span>or</span>
+						</div>
+
+			      		<button class="btn btn-primary btn-lg" id="travel">I Want to Travel</button>
+		      		</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="host-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">BECOME GUIDE</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-7 new-registration">
+							<form role="form">
+									<div class="form-group">
+										<label for="exampleInputText">First name</label>
+										<input type="text" placeholder="First Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputText">Last name</label>
+										<input type="text" placeholder="Last Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email address</label>
+										<input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Password</label>
+										<input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+									</div>
+		
+									<button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+								</form>
+						</div>
+						<div class="col-md-5 fb-login text-center">
+							<span class="badge pull-right">or</span>
+							<div class="fb-logo"></div>
+							<p>You may also login through your existing Facebook by clicking the button below and entering your username and password. </p>
+							<a href="" class="btn btn-primary btn-lg btn-facebook">
+								<i class="fa fa-facebook"></i>Login with Facebook
+							</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+					
+					<button type="button" class="back btn btn-defualt pull-left">Back</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="travel-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Travel Title</h4>
+					</div>
+					<div class="modal-body">
+						<div class="col-md-7 new-registration">
+							<form role="form">
+									<div class="form-group">
+										<label for="exampleInputText">First name</label>
+										<input type="text" placeholder="First Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputText">Last name</label>
+										<input type="text" placeholder="Last Name" id="exampleInputText" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email address</label>
+										<input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Password</label>
+										<input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
+									</div>
+		
+									<button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+								</form>
+						</div>
+						<div class="col-md-5 fb-login text-center">
+							<span class="badge pull-right">or</span>
+							<div class="fb-logo">
+								
+							</div>
+							<p>You may also login through your existing Facebook by clicking the button below and entering your username and password.</p>
+							<a href="" class="btn btn-primary btn-lg btn-facebook">
+								<i class="fa fa-facebook"></i>Login with Facebook
+							</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="back btn btn-defualt pull-left">Back</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="dashboard">
+		<div class="profile">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="profile-img pull-left">
+					        <span class="avatar"><i class="fa fa-user"></i></span>
+					        <label class="username">Steven Smith</label>
+					    </div>
+
+					    <div class="view-profile pull-right">
+					        <a class="btn btn-danger" href="dash-traveler-profile.html">View Profile</a>
+					    </div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="container">
+			<div class="wrapper">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="recentactives">
+							<h1>Recently Addes Guides</h1>
+							<div class="post">
+								<div class="row">
+									<div class="col-md-10">
+										<div class="user">
+											<a href="#" style="background-image:url(images/guide-1.jpg)"></a>
+											<div class="name">
+												<h5>Anna Rosee</h5>
+												<span>2 year(experience)</span>
+												<div>
+													<span title="" date-placement="top" data-toggle="tooltip" class="rating average" data-original-title="Average">
+														<span>3</span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 text-center">
+										<span class="booked">Booked 1 day ago</span>
+										<button class="btn btn-primary cust-btn-sm">View Detail</button>
+									</div>
+								</div>
+							</div>
+							<div class="post">
+								<div class="row">
+									<div class="col-md-10">
+										<div class="user">
+											<a href="#" style="background-image:url(images/guide-2.jpg)"></a>
+											<div class="name">
+												<h5>Anthony Bell</h5>
+												<span>2 year(experience)</span>
+												<div>
+													<span title="" date-placement="top" data-toggle="tooltip" class="rating remarkable" data-original-title="Remarkable">
+														<span>5</span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 text-center">
+										<span class="booked">Booked 2 day ago</span>
+										<button class="btn btn-primary cust-btn-sm">View Detail</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<footer class="m0">
+	<div class="container">
+		<div class="col-md-6">
+			<div class="logo-quote">
+				<h4>Lorem ipsum dolor sit amet, consectetur </h4>
+				<small>incididunt ut labore et dolore magna aliqua. </small>
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="">About</a></li>
+					<li><a href="">How it Works</a></li>
+					<li><a href="">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6 text-right">
+			<h4>Go Social</h4>
+			<div class="social">
+				<ul>
+					<li><a href=""><i class="fa fa-facebook"></i></a></li>
+					<li><a href=""><i class="fa fa-twitter"></i></a></li>
+					<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+					<li><a href=""><i class="fa fa-pinterest"></i></a></li>
+				</ul>
+			</div>
+
+			<div class="links">
+				<ul>
+					<li><a href="">Privacy</a></li>
+					<li><a href="">Terms &amp; Conditions</a></li>
+					<li><a href="">Sitemap</a></li>
+				</ul>
+			</div>
+			<a class="agency" href="http://www.3hammers.com">
+				Digital Agency<img alt="3hammers" src="images/3hammers_footer.png">
+			</a>
+		</div>
+	</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+          <!-- Main Footer -->
+          <footer class="main-footer">
+           
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 2015 <a href="#"><?php echo e($siteTitle); ?></a>.</strong> <?php echo e(trans('strings.all_rights_reserved')); ?>
+
+          </footer>

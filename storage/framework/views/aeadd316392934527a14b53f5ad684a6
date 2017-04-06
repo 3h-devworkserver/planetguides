@@ -1,0 +1,23 @@
+<?php $__env->startSection('title', trans('menus.review_management')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.review_management')); ?>
+
+        <small>Unapproved Reviews</small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li class="active">Unapproved Reviews</li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $table; ?>
+
+    <div class="clearfix"></div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

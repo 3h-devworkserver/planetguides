@@ -1,0 +1,38 @@
+<?php foreach($gallerys as $gallery): ?>
+	<div class="col-md-3 col-sm-4">
+		<div class="thumb-wrap">
+			<a style="background-image:url(<?php echo e(asset($gallery->path)); ?>)"  data-fancybox-group="gallery" href="<?php echo e(asset($gallery->path)); ?>" title="<?php echo e($gallery->caption); ?> " class="fancybox bg-wrap"></a>
+			<?php if (access()->hasRole('Guide')): ?>
+			<?php echo Form::open(['url'=>'#','id'=>'galleryDeleteForm']); ?> 
+                <?php echo Form::hidden('id',$gallery->id); ?>
+
+                <button type="submit" id="galleryDeleteButton" onclick="return confirm('Are you sure you want to delete this item?');">
+                    <i>&times;</i>
+                </button> 
+            <?php echo Form::close(); ?>
+
+            <div class="caption-area"> 
+	            <?php echo Form::open(['url'=>'#','id'=>'galleryCaptionEditForm','style'=>'display:none']); ?> 
+	                <?php echo Form::hidden('id',$gallery->id); ?>
+
+					<?php echo Form::text('caption',$gallery->caption, ['class'=>'form-control']); ?>
+
+	                <button type="submit">Save</button> 
+	            <?php echo Form::close(); ?>
+
+            	<span id="galleryCaptionEditBtn" class="edit-icon" title="Edit"><i class="fa fa-pencil"></i></span>
+            </div>
+            <?php endif; ?>     
+		</div>	
+	</div>
+<?php endforeach; ?>
+<?php if($gallerys->nextPageUrl()): ?> 
+	<div class="row"  id="loadmore-pagination">
+	<div class="col-md-12 text-center">
+	    <nav class="btn btn-primary cust-btn-lg">
+	      <a id="loadmore-gallery" href="<?php echo $gallerys->nextPageUrl(); ?>">Load More</a>
+	      <img id="loadmore-loader" style="display: none;" src="<?php echo e(asset('images/ajax-loader.gif')); ?>">
+	    </nav>
+	 </div>
+	</div>
+ <?php endif; ?>

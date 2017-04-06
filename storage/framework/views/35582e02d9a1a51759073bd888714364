@@ -1,0 +1,36 @@
+<div class="dashboard-navbar">
+	<div class="container">
+		<ul>
+			<li class="<?php echo e(Active::pattern('traveller/dashboard*')); ?>">
+				<a href="<?php echo e(URL::to('traveller/dashboard')); ?>">
+					<i class="fa fa-tachometer"></i>
+					dashboard
+				</a>
+			</li>
+			<li class="<?php echo e(Active::pattern('traveller/activity*')); ?>">
+				<a href="<?php echo e(url('traveller/activity')); ?>">
+					<i class="fa fa-calendar-o"></i>
+					Booking history
+				</a>
+			</li>
+			<li class="<?php echo e(Active::pattern('admin/pages*')); ?>">
+				<a href="#">
+					<i class="fa fa-star"></i>
+					your reviews
+				</a>
+			</li>
+			<li class="<?php echo e(Active::pattern('traveller/favorites*')); ?>">
+				<a href="<?php echo e(url('traveller/favorites')); ?>">
+					<i class="fa fa-heart"></i>
+					your favourite
+				</a>
+			</li>
+			<li class="<?php echo e(Active::pattern('traveller/profile*')); ?>">
+				<a href="<?php echo e(url('/traveller/profile')); ?>">
+					<i class="fa fa-user"></i>
+					profile
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

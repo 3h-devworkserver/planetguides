@@ -1,0 +1,70 @@
+    <div class="pull-right" style="margin-bottom:10px">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <?php echo e(trans('menus.header_buttons.users.button')); ?> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php echo e(route('admin.access.users.index')); ?>"><?php echo e(trans('menus.header_buttons.users.all')); ?></a></li>
+
+            <?php if (access()->can('create-users')): ?>
+                <li><a href="<?php echo e(route('admin.access.users.create')); ?>"><?php echo e(trans('menus.create_user')); ?></a></li>
+            <?php endif; ?>
+
+            <li class="divider"></li>
+            <li><a href="<?php echo e(route('admin.access.users.deactivated')); ?>"><?php echo e(trans('menus.deactivated_users')); ?></a></li>
+            <li><a href="<?php echo e(route('admin.access.users.banned')); ?>"><?php echo e(trans('menus.banned_users')); ?></a></li>
+            <li><a href="<?php echo e(route('admin.access.users.deleted')); ?>"><?php echo e(trans('menus.deleted_users')); ?></a></li>
+          </ul>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <?php echo e(trans('menus.header_buttons.roles.button')); ?> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="<?php echo e(route('admin.access.roles.index')); ?>"><?php echo e(trans('menus.header_buttons.roles.all')); ?></a></li>
+
+            <?php if (access()->can('create-roles')): ?>
+                <li><a href="<?php echo e(route('admin.access.roles.create')); ?>"><?php echo e(trans('menus.create_role')); ?></a></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <?php echo e(trans('menus.header_buttons.permissions.button')); ?> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu">
+
+            <?php if (access()->can('create-permission-groups')): ?>
+                <li><a href="<?php echo e(route('admin.access.roles.permission-group.create')); ?>"><?php echo e(trans('menus.create_permission_group')); ?></a></li>
+            <?php endif; ?>
+
+            <?php if (access()->can('create-permissions')): ?>
+                <li><a href="<?php echo e(route('admin.access.roles.permissions.create')); ?>"><?php echo e(trans('menus.create_permission')); ?></a></li>
+            <?php endif; ?>
+
+            <?php if (access()->canMultiple(['create-permission-groups', 'create-permissions'])): ?>
+                <li class="divider"></li>
+            <?php endif; ?>
+
+            <li><a href="<?php echo e(route('admin.access.roles.permissions.index')); ?>"><?php echo e(trans('menus.header_buttons.permissions.all')); ?></a></li>
+            <li><a href="<?php echo e(route('admin.access.roles.permissions.index')); ?>"><?php echo e(trans('menus.header_buttons.permissions.groups.all')); ?></a></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <!-- <div> 
+            <ul class="nav nav-tabs" role="tablist">
+
+            
+        
+                <li role="presentation" class="active"><?php echo link_to_route('admin.access.users.create', trans('menus.create_user')); ?></li>
+                <li role="presentation" class="active"><?php echo link_to_route('admin.access.roles.create', trans('menus.create_role')); ?></li>
+
+
+                <li role="presentation" class="active"><?php echo link_to_route('admin.access.roles.permissions.index', trans('menus.permission_management')); ?></li>
+                <li role="presentation" class="active"><?php echo link_to_route('admin.access.roles.index', trans('menus.header_buttons.roles.all')); ?></li>
+            </ul>
+    </div> -->

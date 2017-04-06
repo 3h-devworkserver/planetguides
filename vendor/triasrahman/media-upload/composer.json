@@ -1,0 +1,23 @@
+{
+    "name": "triasrahman/media-upload",
+    "description": "Simple and easy AJAX media upload for Laravel",
+    "keywords": ["ajax", "media", "upload", "file", "image", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trias Nur Rahman",
+            "email": "contact@triasrahman.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*",
+        "intervention/image": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Triasrahman\\MediaUpload\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,535 @@
+<?php $__env->startSection('title'); ?> Profile | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<section class="dashboard">
+	<?php echo $__env->make('frontend.traveller.includes.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<?php echo $__env->make('frontend.traveller.includes.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				<div class="dash-menu">
+						<ul class="nav nav-tabs" role="tablist" id="myTab">
+							<li role="presentation" class="active">
+								<a href="#dash-home" aria-controls="home" role="tab" data-toggle="tab">
+									<i class="fa fa-tachometer"></i>
+									Recent Activities 
+									<i class="fa fa-angle-right pull-right"></i>
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#reviews-home" aria-controls="profile" role="tab" data-toggle="tab">
+									<i class="fa fa-pencil"></i>
+									Reviews
+									<i class="fa fa-angle-right pull-right"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+			</div>
+			<div class="col-md-9">
+			    <div class="dashboard-activites">
+			        <div class="tab-content">
+			            <div role="tabpanel" class="tab-pane active" id="dash-home">
+			                <div class="recentactives">
+			                    <h1>recent activites</h1>
+			                    <div class="post guide favourite">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-1.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4>
+														<a href="#">Sara Williams</a><small>Since 1990</small>
+													</h4>
+			                                        <p class="time">
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 1 year ago <span>booked</span>.
+			                                        </p>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating average">
+			                                            <span>3</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(2)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post guide">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4>
+														<a href="#">John Doe</a><small>Since 2000</small>
+													</h4>
+			                                        <p class="time">
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 1 week ago <span>booked</span>.
+			                                        </p>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(2)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post guide">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4>
+														<a href="#">Petey Cruiser </a><small>Since 2001</small>
+													</h4>
+			                                        <p class="time">
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 1 year ago <span>booked</span>
+			                                        </p>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating average">
+			                                            <span>3</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(2)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post guide">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4>
+														<a href="#">Walter Melon</a><small>Since 2010</small>
+													</h4>
+			                                        <p class="time">
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 month ago <span>booked</span>.
+			                                        </p>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating worst">
+			                                            <span>1</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(2)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post guide favourite">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-3.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4>
+														<a href="#">Rick O'Shea</a><small>Since 2015</small>
+													</h4>
+			                                        <p class="time">
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 1 day ago <span>booked</span>.
+			                                        </p>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(2)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post review">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                        <div class="time">
+			                                            <p>
+			                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                            </p>
+			                                        </div>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(10)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="review-text">
+			                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post review">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                        <div class="time">
+			                                            <p>
+			                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                            </p>
+			                                        </div>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(10)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="review-text">
+			                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post review">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                        <div class="time">
+			                                            <p>
+			                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                            </p>
+			                                        </div>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(10)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="review-text">
+			                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post review">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                        <div class="time">
+			                                            <p>
+			                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                            </p>
+			                                        </div>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(10)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="review-text">
+			                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="post review">
+			                        <div class="row">
+			                            <div class="col-md-2">
+			                                <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                                </div>
+			                            </div>
+			                            <div class="col-md-10">
+			                                <div class="post-top">
+			                                    <div class="name">
+			                                        <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                        <div class="time">
+			                                            <p>
+			                                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                            </p>
+			                                        </div>
+			                                    </div>
+			                                    <div class="review-rating">
+			                                        <div class="rating remarkable">
+			                                            <span>5</span>
+			                                        </div>
+			                                        <div class="review">
+			                                            <p>review<span>(10)</span></p>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="review-text">
+			                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			            <div role="tabpanel" class="tab-pane" id="reviews-home">
+			                <h1>Recent Reviews</h1>
+			                <div class="post review">
+			                    <div class="row">
+			                        <div class="col-md-2">
+			                            <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                            </div>
+			                        </div>
+			                        <div class="col-md-10">
+			                            <div class="post-top">
+			                                <div class="name">
+			                                    <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                    <div class="time">
+			                                        <p>
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                        </p>
+			                                    </div>
+			                                </div>
+			                                <div class="review-rating">
+			                                    <div class="rating remarkable">
+			                                        <span>5</span>
+			                                    </div>
+			                                    <div class="review">
+			                                        <p>review<span>(10)</span></p>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="review-text">
+			                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="post review">
+			                    <div class="row">
+			                        <div class="col-md-2">
+			                            <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                            </div>
+			                        </div>
+			                        <div class="col-md-10">
+			                            <div class="post-top">
+			                                <div class="name">
+			                                    <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                    <div class="time">
+			                                        <p>
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                        </p>
+			                                    </div>
+			                                </div>
+			                                <div class="review-rating">
+			                                    <div class="rating remarkable">
+			                                        <span>5</span>
+			                                    </div>
+			                                    <div class="review">
+			                                        <p>review<span>(10)</span></p>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="review-text">
+			                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="post review">
+			                    <div class="row">
+			                        <div class="col-md-2">
+			                            <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                            </div>
+			                        </div>
+			                        <div class="col-md-10">
+			                            <div class="post-top">
+			                                <div class="name">
+			                                    <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                    <div class="time">
+			                                        <p>
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                        </p>
+			                                    </div>
+			                                </div>
+			                                <div class="review-rating">
+			                                    <div class="rating remarkable">
+			                                        <span>5</span>
+			                                    </div>
+			                                    <div class="review">
+			                                        <p>review<span>(10)</span></p>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="review-text">
+			                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="post review">
+			                    <div class="row">
+			                        <div class="col-md-2">
+			                            <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                            </div>
+			                        </div>
+			                        <div class="col-md-10">
+			                            <div class="post-top">
+			                                <div class="name">
+			                                    <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                    <div class="time">
+			                                        <p>
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                        </p>
+			                                    </div>
+			                                </div>
+			                                <div class="review-rating">
+			                                    <div class="rating remarkable">
+			                                        <span>5</span>
+			                                    </div>
+			                                    <div class="review">
+			                                        <p>review<span>(10)</span></p>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="review-text">
+			                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="post review">
+			                    <div class="row">
+			                        <div class="col-md-2">
+			                            <div class="img-block bg-wrap" style="background-image:url(<?php echo e(asset('images/guide-2.jpg')); ?>)">
+			                            </div>
+			                        </div>
+			                        <div class="col-md-10">
+			                            <div class="post-top">
+			                                <div class="name">
+			                                    <h4><a href="#"> Ryan Sheridan </a><small>Since 1990</small></h4>
+			                                    <div class="time">
+			                                        <p>
+			                                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i> 6 days ago <span>review</span>.
+			                                        </p>
+			                                    </div>
+			                                </div>
+			                                <div class="review-rating">
+			                                    <div class="rating remarkable">
+			                                        <span>5</span>
+			                                    </div>
+			                                    <div class="review">
+			                                        <p>review<span>(10)</span></p>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                            <div class="review-text">
+			                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id distinctio doloribus nulla in magni saepe ipsa dolor ab, vero repudiandae porro et fugit nisi dolorum...</p>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-scripts-end'); ?>
+
+    <!-- Load required JS libraries. -->
+    <?php echo HTML::script('blueimp/load-image.all.min.js'); ?>
+
+    <?php echo HTML::script('blueimp/canvas-to-blob.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.iframe-transport.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-process.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-image.js'); ?>
+
+    <?php echo HTML::script('blueimp/jquery.fileupload-validate.js'); ?>
+
+
+    <?php echo HTML::script('js/customUpload.js'); ?>
+
+    <script language="javascript">
+    	print_country("country","<?php echo e($user->country); ?>");
+    	$("#state").append(new Option("<?php echo e($user->state); ?>", "<?php echo e($user->state); ?>"));
+    </script>
+
+  
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('after-styles-end'); ?>
+  <?php echo HTML::style('blueimp/css/jquery.fileupload.css'); ?>
+
+  <?php echo HTML::style('blueimp/css/jquery.fileupload-ui.css'); ?>
+
+  <?php echo HTML::script('js/countries.js'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,93 @@
+<?php $__env->startSection('title', trans('menus.booking_management')); ?>
+
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <?php echo e(trans('menus.booking_management')); ?>
+
+        <small><?php echo e($booking_type); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+    <li class="active"><?php echo e($booking_type); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php echo $table; ?>
+
+
+<!-- Modal -->
+<div class="modal fade guidepayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+  <?php echo Form::open(['method'=>'patch', 'class'=>'guidePaymentForm']); ?>
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Change Guide Payment Attributes</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+      	<label>Guide Payment Amount</label>
+        <?php echo Form::input('number','guide_payment_amount', null, ['class'=>'form-control guideAmount', 'min'=>0, 'step'=>'any'] ); ?>
+
+        </div>
+     	 <div class="form-group">
+     	 <label>Guide Payment Status</label>
+        <?php echo Form::select('guide_payment_status', ['not paid'=>'Not paid', 'partial paid'=>'Partial Paid', 'full paid'=>'Full Paid'], null, ['class'=>'form-control guideStatus']); ?>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-orange">Save</button>
+      </div>
+    </div>
+    <?php echo Form::close(); ?>
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade nextStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal-dialog" role="document">
+  <?php echo Form::open(['method'=>'patch', 'class'=>'nextForm']); ?>
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel2">Change Next Attributes</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+      	<label>Next Id (Transaction Id)</label>
+        <?php echo Form::text('next_id', null, ['class'=>'form-control nextId'] ); ?>
+
+        </div>
+     	 <div class="form-group">
+     	 <label>Status</label>
+        <?php echo Form::select('next_status', ['remaining'=>'Remaining', 'paid'=>'Paid'], null, ['class'=>'form-control nextStat', 'placeholder'=>'Payment Transaction Id']); ?>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-orange">Save</button>
+      </div>
+    </div>
+    <?php echo Form::close(); ?>
+
+  </div>
+</div>
+
+    <div class="clearfix"></div>
+
+  
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

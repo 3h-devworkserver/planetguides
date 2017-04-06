@@ -1,0 +1,79 @@
+<?php
+use App\Models\Access\User\User;
+?>
+
+<?php $__env->startSection('title'); ?> Recent Activity | <?php echo e($siteTitle); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>	
+	<section class="dashboard">
+		<div class="profile">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="profile-img pull-left">
+					        <span class="avatar"><i class="fa fa-user"></i></span>
+					        <label class="username"><?php echo e(Auth::user()->username); ?></label>
+					    </div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="container">
+			<div class="wrapper">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="recentactives">
+							<h1>Your Earnings</h1>
+							<?php if($bookings): ?>
+								<table class="table">
+									<tr>
+										<th>Traveler</th>
+										<th>E-Mail Address</th>
+										<th>Location Details</th>
+										<th>Dates</th>
+										<th>Number of days</th>
+										<th>Amount ($)</th>
+									</tr>
+								<?php foreach($bookings as $booking): ?>
+									<tr>
+										<th>
+											<?php echo e(User::find($booking->uid)->fname); ?> <?php echo e(User::find($booking->uid)->lname); ?>
+
+										</th>
+										<th>
+											<?php echo e($booking->email); ?>
+
+										</th>
+										<th>
+											<?php echo e($booking->country); ?><br><?php echo e($booking->state); ?><br><?php echo e($booking->city); ?>
+
+										</th>
+										<th>
+											<?php echo str_replace(',', "<br>", $booking->dates); ?>
+
+										</th>
+										<th>
+											<?php echo $booking->days; ?>
+
+										</th>
+										<th>
+											$<?php echo e(($booking->transaction_amount+$booking->next_amount-$booking->service_charge-$booking->next_service_charge)); ?>
+
+										</th>
+									</tr>
+								<?php endforeach; ?>
+								</table>
+							<?php else: ?>
+								<div class="alert alert-info text-center">
+									Sorry, you have not been booked by any traveler yet.
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('frontend.layouts.masterProfile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

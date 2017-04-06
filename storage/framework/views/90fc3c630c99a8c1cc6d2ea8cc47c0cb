@@ -1,0 +1,45 @@
+<?php $__env->startSection('title', 'Reply Contact Email'); ?>
+
+<?php $__env->startSection('page-header'); ?>
+  <h1>
+      Reply Contact Email
+  </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+  <li><a href="<?php echo route('backend.dashboard'); ?>"><i class="fa fa-dashboard"></i> <?php echo e(trans('menus.dashboard')); ?></a></li>
+  <li class="active">Reply Contact Email</li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+		<label>Message Recieved</label>
+
+<div class="well"><?php echo $contact->comment; ?></div>
+		
+	<?php echo Form::open(['url'=>'admin/contactemail/reply/'.$contact->id, 'method'=>'patch']); ?>
+
+	<div class="form-group">
+		<label>To</label>
+		<?php echo Form::text('to', $contact->email, ['placeholder'=>'Enter Email Address', 'class'=>'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+		<label>Subject</label>
+		<?php echo Form::text('subject', null, ['placeholder'=>'Enter Subject', 'class'=>'form-control']); ?>
+
+		</div>
+		<div class="form-group">
+		<label>Email</label>
+		<?php echo Form::textarea('email', $template, ['placeholder'=>'Enter Email Content', 'class'=>'form-control']); ?>
+
+		</div>
+		<?php echo Form::submit('Send', ['class'=>'btn btn-warning']); ?>
+
+	<?php echo Form::close(); ?>
+
+
+     <?php echo $__env->make('backend.includes.tinymce', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <div class="clearfix"></div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,41 @@
+<?php $__env->startSection('page-header'); ?>
+    <h1>
+        <small><?php echo e(trans('menus.service_charge')); ?></small>
+    </h1>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumbs'); ?>
+    <li class="active"><i class="fa fa-money"></i> <?php echo e(trans('menus.service_charge')); ?></li>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title"><?php echo e(trans('menus.service_charge')); ?></h3>
+          <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+           <?php echo Form::model($settings, ['class' => 'form-inline']); ?>
+
+                   <div class="form-group">
+
+                    <?php echo Form::label('charges', 'Service Charge'); ?>
+
+                    <?php echo Form::text('charges', $settings->charges, ['class' => 'form-control']); ?>
+
+                    <p class="help-block">Note: Put 1 if you don't want any sevice charge.</p>
+                    <?php echo Form::hidden('id', $settings->id); ?>
+
+                    <?php echo Form::submit('Save', ['class' => 'btn btn-primary']); ?>
+
+                    
+                    </div>
+          <?php echo Form::close(); ?>
+
+
+        </div><!-- /.box-body -->
+    </div><!--box box-success-->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
